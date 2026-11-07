@@ -1,18 +1,24 @@
-import '../css/dashboard.css';
-import '../css/everyday-banking.css';
-import EverydayBanking from './dashboard/EverydayBanking';
+import "../css/dashboard.css";
+import "../css/everyday-banking.css";
+import EverydayBanking from "./dashboard/EverydayBanking";
+import AccountCard from "./dashboard/AccountCard";
+
 function Dashboard() {
+  // temporary data until we connect our database
+  const account = {
+    type: "OCBC FRANK Account",
+    accountNumber: "987-545678-876",
+    balance: 6700,
+    lockedAmount: 10000,
+  };
+
   return (
     <main className="dashboard">
-
       {/* Welcome */}
       <section className="dashboard-welcome">
         <div>
           <h1>Welcome, Kiki</h1>
-          <p>
-            A clear view of your money.
-            A little more peace of mind.
-          </p>
+          <p>A clear view of your money. A little more peace of mind.</p>
         </div>
         <EverydayBanking />
 
@@ -22,22 +28,10 @@ function Dashboard() {
         </div>
       </section>
 
-
       {/* Main Dashboard Grid */}
       <div className="dashboard-grid">
-
         <div className="dashboard-left">
-          <section className="dashboard-panel">
-            <h2>Your account</h2>
-            <p>OCBC Frank Account</p>
-            <h1>SGD 6,700.00</h1>
-            <p>Available balance</p>
-          </section>
-
-          <section className="dashboard-panel">
-            <h2>Recent Transactions</h2>
-            <p>Your latest account activity</p>
-          </section>
+          <AccountCard account={account} />
         </div>
 
         <div className="dashboard-right">
@@ -54,7 +48,6 @@ function Dashboard() {
             <h2>Rewards</h2>
           </section>
         </div>
-
       </div>
     </main>
   );

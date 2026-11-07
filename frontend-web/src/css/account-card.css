@@ -1,0 +1,177 @@
+/* Main Account Card */
+
+.account-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 28px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* Header */
+
+.account-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.account-card-header h2 {
+    font-size: 26px;
+    font-weight: 700;
+    margin: 0;
+    color: #202020;
+}
+
+.account-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #c21f2b;
+}
+
+/* Account Information */
+
+.account-card-info {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.account-card-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+
+    background: #fde8ea;
+    color: #c21f2b;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.account-card-identity {
+    flex: 1;
+    min-width: 0;
+}
+
+.account-card-identity h3 {
+    font-size: 22px;
+    margin: 0 0 6px;
+    color: #202020;
+}
+
+.account-card-identity p {
+    font-size: 18px;
+    color: #777;
+    margin: 0;
+}
+
+.account-card-currency {
+    font-size: 17px;
+    font-weight: 600;
+    color: #666;
+}
+
+/* Balance */
+
+.account-card-balance p {
+    font-size: 20px;
+    color: #777;
+    margin: 0 0 8px;
+}
+
+.account-card-balance h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #202020;
+    margin: 0;
+}
+
+/* Money Lock */
+
+.money-lock-card {
+    background: #f7f8fa;
+    border-radius: 12px;
+    padding: 22px;
+}
+
+.money-lock-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.money-lock-header h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 22px;
+    margin: 0;
+    color: #202020;
+}
+
+.money-lock-header h3 svg {
+    color: #16834a;
+}
+
+.money-lock-amount {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 20px;
+}
+
+.money-lock-amount strong {
+    color: #202020;
+}
+
+.money-lock-card > p {
+    font-size: 18px;
+    color: #777;
+    margin: 18px 0 0;
+    line-height: 1.5;
+}
+
+/* Footer */
+
+.account-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+
+    font-size: 20px;
+    font-weight: 500;
+    color: #c21f2b;
+}
+
+/* Responsive */
+
+@media (max-width: 600px) {
+    .account-card {
+        padding: 20px;
+    }
+
+    .account-card-balance h2 {
+        font-size: 30px;
+    }
+
+    .money-lock-amount {
+        flex-direction: column;
+    }
+}

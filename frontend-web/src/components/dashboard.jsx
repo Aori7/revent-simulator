@@ -1,38 +1,74 @@
-
 import '../css/dashboard.css';
 
 function Dashboard() {
-    return (
-        <main className="dashboard">
+  return (
+    <main className="dashboard">
 
-            {/* welcome section */}
-            <section className="welcome-section">
-                <h1>Welcome, Name!</h1>
-                <p>Welcome back to OCBC Digital Banking.</p>
-            </section>
+      {/* Welcome */}
+      <section className="dashboard-welcome">
+        <div>
+          <h1>Welcome, Kiki</h1>
+          <p>
+            A clear view of your money.
+            A little more peace of mind.
+          </p>
+        </div>
 
-            {/* account balance */}
-            <section className="balance-section">
-                <h2>Account Balance</h2>
-            </section>
+        <div className="dashboard-date">
+          <p>Friday, 6 November 2026</p>
+          <span>Balances updated just now</span>
+        </div>
+      </section>
 
-            {/* quick actions */}
-            <section className="quick-actions">
-                <h2>Quick Actions</h2>
-            </section>
+      {/* Everyday Banking */}
+      <section className="dashboard-panel">
+        <h2 className="section-label">EVERYDAY BANKING</h2>
 
-            {/* recent transactions */}
-            <section className="transactions-section">
-                <h2>Recent Transactions</h2>
-            </section>
+        <div className="banking-actions">
+          <button>PayNow</button>
+          <button>Scan & Pay</button>
+          <button>Transfer</button>
+          <button>Pay bills</button>
+          <button>Manage payees</button>
+          <button>More services</button>
+        </div>
+      </section>
 
-            {/* security section */}
-            <section className="security-section">
-                <h2>Your Security Matters</h2>
-            </section>
+      {/* Main Dashboard Grid */}
+      <div className="dashboard-grid">
 
-        </main>
-    );
+        <div className="dashboard-left">
+          <section className="dashboard-panel">
+            <h2>Your account</h2>
+            <p>OCBC Frank Account</p>
+            <h1>SGD 6,700.00</h1>
+            <p>Available balance</p>
+          </section>
+
+          <section className="dashboard-panel">
+            <h2>Recent Transactions</h2>
+            <p>Your latest account activity</p>
+          </section>
+        </div>
+
+        <div className="dashboard-right">
+          <section className="dashboard-panel">
+            <h2>Your cards</h2>
+          </section>
+
+          <section className="dashboard-panel">
+            <h2>Safer Banking</h2>
+            <p>A second look. A safer payment.</p>
+          </section>
+
+          <section className="dashboard-panel">
+            <h2>Rewards</h2>
+          </section>
+        </div>
+
+      </div>
+    </main>
+  );
 }
 
 export default Dashboard;

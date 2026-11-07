@@ -1,0 +1,236 @@
+/* Your Cards Container */
+
+.your-cards {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 28px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.your-cards-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.your-cards-header h2 {
+    font-size: 26px;
+    font-weight: 700;
+    margin: 0;
+    color: #202020;
+}
+
+.your-cards-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #c21f2b;
+}
+
+/* Debit Card */
+
+.bank-card {
+    background: linear-gradient(
+        130deg,
+        #32151c 0%,
+        #85222f 55%,
+        #d13b47 100%
+    );
+
+    color: white;
+    border-radius: 18px;
+    padding: 26px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+
+    aspect-ratio: 1.586 / 1;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    box-shadow: 0 12px 28px rgba(80, 15, 25, 0.2);
+}
+
+.bank-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* Override existing REVENT logo gradient */
+
+.bank-card-top .revent-logo {
+    font-size: 75px;
+    background: none;
+    -webkit-text-fill-color: white;
+    color: white;
+}
+
+.bank-card-type {
+    font-size: 18px;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+/* Card Chip */
+
+.bank-card-chip-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bank-card-chip {
+    width: 48px;
+    height: 36px;
+    background: linear-gradient(
+        135deg,
+        #e8d5ac,
+        #bca16c
+    );
+    border-radius: 7px;
+    border: 1px solid #f2dfb8;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bank-card-chip span {
+    width: 24px;
+    height: 26px;
+    border: 1px solid rgba(90, 65, 30, 0.45);
+    border-radius: 5px;
+}
+
+.bank-card-contactless {
+    transform: rotate(90deg);
+    opacity: 0.85;
+}
+
+/* Card Number */
+
+.bank-card-number {
+    font-size: clamp(16px, 1.6vw, 24px);
+    letter-spacing: 2px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Card Bottom */
+
+.bank-card-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.bank-card-bottom > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.bank-card-label {
+    font-size: 14px;
+    letter-spacing: 1px;
+    opacity: 0.75;
+}
+
+.bank-card-bottom strong {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.bank-card-network {
+    font-size: 25px;
+    font-weight: 800;
+    font-style: italic;
+}
+
+/* Card Footer */
+
+.your-cards-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.your-cards-details {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #202020;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.your-cards-details svg {
+    color: #c21f2b;
+}
+
+.your-cards-status {
+    background: #e7f6ec;
+    color: #16834a;
+    border-radius: 20px;
+    padding: 7px 14px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* Responsive */
+
+@media (max-width: 1300px) {
+    .bank-card {
+        padding: 20px;
+        gap: 14px;
+    }
+
+    .bank-card-top .revent-logo {
+        font-size: 65px;
+    }
+}
+
+@media (max-width: 900px) {
+    .bank-card {
+        max-width: 550px;
+    }
+}
+
+@media (max-width: 480px) {
+    .your-cards {
+        padding: 20px;
+    }
+
+    .bank-card {
+        padding: 16px;
+        gap: 10px;
+    }
+
+    .bank-card-number {
+        font-size: 16px;
+        letter-spacing: 1px;
+    }
+
+    .bank-card-bottom strong {
+        font-size: 15px;
+    }
+
+    .bank-card-label {
+        font-size: 12px;
+    }
+}

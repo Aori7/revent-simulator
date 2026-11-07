@@ -2,6 +2,7 @@ import "../css/dashboard.css";
 import "../css/everyday-banking.css";
 import EverydayBanking from "./dashboard/EverydayBanking";
 import AccountCard from "./dashboard/AccountCard";
+import YourCards from './dashboard/YourCards';
 
 function Dashboard() {
   // temporary data until we connect our database
@@ -35,9 +36,7 @@ function Dashboard() {
         </div>
 
         <div className="dashboard-right">
-          <section className="dashboard-panel">
-            <h2>Your cards</h2>
-          </section>
+          <YourCards />
 
           <section className="dashboard-panel">
             <h2>Safer Banking</h2>

@@ -1,38 +1,55 @@
-
-import '../css/dashboard.css';
+import "../css/dashboard.css";
+import "../css/everyday-banking.css";
+import EverydayBanking from "./dashboard/EverydayBanking";
+import AccountCard from "./dashboard/AccountCard";
+import YourCards from './dashboard/YourCards';
 
 function Dashboard() {
-    return (
-        <main className="dashboard">
+  // temporary data until we connect our database
+  const account = {
+    type: "OCBC FRANK Account",
+    accountNumber: "987-545678-876",
+    balance: 6700,
+    lockedAmount: 10000,
+  };
 
-            {/* welcome section */}
-            <section className="welcome-section">
-                <h1>Welcome, Name!</h1>
-                <p>Welcome back to OCBC Digital Banking.</p>
-            </section>
+  return (
+    <main className="dashboard">
+      {/* Welcome */}
+      <section className="dashboard-welcome">
+        <div>
+          <h1>Welcome, Kiki</h1>
+          <p>A clear view of your money. A little more peace of mind.</p>
+        </div>
+        <EverydayBanking />
 
-            {/* account balance */}
-            <section className="balance-section">
-                <h2>Account Balance</h2>
-            </section>
+        <div className="dashboard-date">
+          <p>Friday, 6 November 2026</p>
+          <span>Balances updated just now</span>
+        </div>
+      </section>
 
-            {/* quick actions */}
-            <section className="quick-actions">
-                <h2>Quick Actions</h2>
-            </section>
+      {/* Main Dashboard Grid */}
+      <div className="dashboard-grid">
+        <div className="dashboard-left">
+          <AccountCard account={account} />
+        </div>
 
-            {/* recent transactions */}
-            <section className="transactions-section">
-                <h2>Recent Transactions</h2>
-            </section>
+        <div className="dashboard-right">
+          <YourCards />
 
-            {/* security section */}
-            <section className="security-section">
-                <h2>Your Security Matters</h2>
-            </section>
+          <section className="dashboard-panel">
+            <h2>Safer Banking</h2>
+            <p>A second look. A safer payment.</p>
+          </section>
 
-        </main>
-    );
+          <section className="dashboard-panel">
+            <h2>Rewards</h2>
+          </section>
+        </div>
+      </div>
+    </main>
+  );
 }
 
 export default Dashboard;

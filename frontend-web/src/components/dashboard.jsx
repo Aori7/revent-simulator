@@ -1,5 +1,6 @@
 import '../css/dashboard.css';
-
+import '../css/everyday-banking.css';
+import EverydayBanking from './dashboard/EverydayBanking';
 function Dashboard() {
   return (
     <main className="dashboard">
@@ -13,6 +14,7 @@ function Dashboard() {
             A little more peace of mind.
           </p>
         </div>
+        <EverydayBanking />
 
         <div className="dashboard-date">
           <p>Friday, 6 November 2026</p>
@@ -20,19 +22,6 @@ function Dashboard() {
         </div>
       </section>
 
-      {/* Everyday Banking */}
-      <section className="dashboard-panel">
-        <h2 className="section-label">EVERYDAY BANKING</h2>
-
-        <div className="banking-actions">
-          <button>PayNow</button>
-          <button>Scan & Pay</button>
-          <button>Transfer</button>
-          <button>Pay bills</button>
-          <button>Manage payees</button>
-          <button>More services</button>
-        </div>
-      </section>
 
       {/* Main Dashboard Grid */}
       <div className="dashboard-grid">

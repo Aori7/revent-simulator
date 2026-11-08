@@ -66,7 +66,7 @@ function Navbar() {
           <a href="#">Accounts</a>
           <a href="#">Transfer & Pay</a>
           <a href="#">Cards</a>
-          <a href="#">Investments</a>
+          {/* <a href="#">Investments</a> */}
           <a href="#">Rewards</a>
           <a href="#">More</a>
         </div>

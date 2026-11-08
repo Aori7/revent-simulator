@@ -3,6 +3,9 @@ import "../css/everyday-banking.css";
 import EverydayBanking from "./dashboard/EverydayBanking";
 import AccountCard from "./dashboard/AccountCard";
 import YourCards from './dashboard/YourCards';
+import RecentTransactions from './dashboard/RecentTransactions';
+import SecurityCard from './dashboard/SecurityCard';
+import RewardsCard from './dashboard/RewardsCard';
 
 function Dashboard() {
   // temporary data until we connect our database
@@ -33,19 +36,13 @@ function Dashboard() {
       <div className="dashboard-grid">
         <div className="dashboard-left">
           <AccountCard account={account} />
+          <RecentTransactions />
         </div>
 
         <div className="dashboard-right">
           <YourCards />
-
-          <section className="dashboard-panel">
-            <h2>Safer Banking</h2>
-            <p>A second look. A safer payment.</p>
-          </section>
-
-          <section className="dashboard-panel">
-            <h2>Rewards</h2>
-          </section>
+          <SecurityCard />
+          <RewardsCard />
         </div>
       </div>
     </main>

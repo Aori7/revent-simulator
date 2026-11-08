@@ -2,8 +2,15 @@ import "../css/navbar.css";
 import ReventLogo from "./ReventLogo.jsx";
 import { NavLink } from 'react-router-dom';
 import {Search,CircleHelp,Bell,ChevronDown,LogOut,Bot,} from "lucide-react";
+import { useNavigate } from 'react-router-dom';
 
 function Navbar() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    sessionStorage.removeItem('reventDemoLogin');
+    navigate('/login', { replace: true });
+  };
   return (
     <header className="navbar">
       {/* TOP NAVIGATION */}
@@ -50,7 +57,7 @@ function Navbar() {
             <ChevronDown size={15} />
           </button>
 
-          <button className="navbar-logout" type="button">
+          <button type="button" className="navbar-logout"onClick={handleLogout}>
             <LogOut size={17} />
             <span>Logout</span>
           </button>

@@ -1,0 +1,191 @@
+.login-page {
+    min-height: 100dvh;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding: 60px 8%;
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            rgba(20, 20, 35, 0.25),
+            rgba(20, 20, 35, 0.35)
+        ),
+        url('/revent-skyline.png');
+
+    background-size: cover;
+    background-position: center;
+    font-family: inherit;
+}
+
+.login-content {
+    width: 100%;
+    max-width: 420px;
+}
+
+.login-card {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.795);
+}
+
+.login-card .revent-logo {
+    font-size: 90px;
+    margin-bottom: 18px;
+}
+
+.login-card h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #202020;
+    margin: 0 0 30px;
+}
+
+.login-card form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-card label {
+    font-size: 18px;
+    color: #666666;
+    margin-bottom: 8px;
+}
+
+.login-card input {
+    width: 100%;
+    padding: 13px 12px;
+    box-sizing: border-box;
+
+    border: none;
+    border-bottom: 2px solid #333333;
+    border-radius: 0;
+
+    outline: none;
+    font-family: inherit;
+    font-size: 20px;
+
+    margin-bottom: 24px;
+    background: transparent;
+}
+
+.login-card input:focus {
+    border-bottom-color: #c21f2b;
+}
+
+.login-pin-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.login-pin-wrapper input {
+    padding-right: 45px;
+}
+
+.login-show-pin {
+    position: absolute;
+    right: 6px;
+    top: 10px;
+
+    border: none;
+    background: none;
+    color: #666666;
+    cursor: pointer;
+}
+
+.login-submit {
+    width: 100%;
+    padding: 15px;
+
+    background: #e60012;
+    color: #ffffff;
+
+    border: none;
+    border-radius: 5px;
+
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.login-submit:hover {
+    background: #c21f2b;
+}
+
+.login-error {
+    color: #c21f2b;
+    font-size: 16px;
+    margin: 0 0 18px;
+}
+
+.login-help {
+    margin-top: 18px;
+    border: none;
+    background: none;
+
+    font-family: inherit;
+    font-size: 16px;
+    color: #333333;
+
+    cursor: pointer;
+}
+
+.login-register {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-footer {
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+
+    color: #ffffff;
+    font-size: 14px;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+    .login-page {
+        justify-content: center;
+        align-items: center;
+        padding: 30px 20px 65px;
+        background-position: center;
+    }
+
+    .login-content {
+        max-width: 420px;
+    }
+
+    .login-card {
+        padding: 30px 24px;
+    }
+
+    .login-card h1 {
+        font-size: 26px;
+    }
+
+    .login-footer {
+        left: 15px;
+        right: 15px;
+        text-align: center;
+        font-size: 12px;
+    }
+}

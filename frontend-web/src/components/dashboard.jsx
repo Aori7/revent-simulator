@@ -5,6 +5,7 @@ import AccountCard from "./dashboard/AccountCard";
 import YourCards from './dashboard/YourCards';
 import RecentTransactions from './dashboard/RecentTransactions';
 import SecurityCard from './dashboard/SecurityCard';
+import RewardsCard from './dashboard/RewardsCard';
 
 function Dashboard() {
   // temporary data until we connect our database
@@ -41,15 +42,7 @@ function Dashboard() {
         <div className="dashboard-right">
           <YourCards />
           <SecurityCard />
-
-          <section className="dashboard-panel">
-            <h2>Safer Banking</h2>
-            <p>A second look. A safer payment.</p>
-          </section>
-
-          <section className="dashboard-panel">
-            <h2>Rewards</h2>
-          </section>
+          <RewardsCard />
         </div>
       </div>
     </main>

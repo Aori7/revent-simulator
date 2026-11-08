@@ -1,6 +1,6 @@
 import "../css/navbar.css";
 import ReventLogo from "./ReventLogo.jsx";
-
+import { NavLink } from 'react-router-dom';
 import {Search,CircleHelp,Bell,ChevronDown,LogOut,Bot,} from "lucide-react";
 
 function Navbar() {
@@ -59,17 +59,14 @@ function Navbar() {
 
       {/* BOTTOM NAVIGATION */}
       <nav className="navbar-bottom" aria-label="Main navigation">
-        <div className="navbar-links">
-          <a href="#" className="active">
-            Home
-          </a>
-          <a href="#">Accounts</a>
-          <a href="#">Transfer & Pay</a>
-          <a href="#">Cards</a>
-          {/* <a href="#">Investments</a> */}
-          <a href="#">Rewards</a>
-          <a href="#">More</a>
-        </div>
+      <div className="navbar-links">
+        <NavLink to="/" end>Home</NavLink>
+        <NavLink to="/accounts">Accounts</NavLink>
+        <NavLink to="/transfer">Transfer & Pay</NavLink>
+        <NavLink to="/cards">Cards</NavLink>
+        <NavLink to="/rewards">Rewards</NavLink>
+        <NavLink to="/more">More</NavLink>
+      </div>
 
         <a href="#" className="navbar-chatbot">
           <Bot size={19} />

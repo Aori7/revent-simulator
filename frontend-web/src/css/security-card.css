@@ -1,0 +1,150 @@
+/* Main Security Card */
+
+.security-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 28px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Header */
+
+.security-card-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.security-card-icon {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #fde8ea;
+    color: #c21f2b;
+    border-radius: 14px;
+}
+
+.security-card-heading {
+    min-width: 0;
+}
+
+.security-card-heading h2 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #202020;
+    margin: 0 0 8px;
+}
+
+.security-card-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 18px;
+    font-weight: 600;
+    color: #16834a;
+    margin: 0;
+}
+
+/* Description */
+
+.security-card-description {
+    font-size: 20px;
+    color: #666666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* AI Assistant */
+
+.security-card-assistant {
+    background: #f7f8fa;
+    border-radius: 12px;
+    padding: 22px;
+}
+
+.security-card-assistant h3 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-size: 22px;
+    font-weight: 600;
+    color: #202020;
+
+    margin: 0 0 14px;
+}
+
+.security-card-assistant h3 svg {
+    color: #c21f2b;
+    flex-shrink: 0;
+}
+
+.security-card-assistant p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #666666;
+    margin: 0;
+}
+
+/* Chat Button */
+
+.security-card-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    width: 100%;
+    padding: 16px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #c21f2b;
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.security-card-button:hover:not(:disabled) {
+    background: #a51b25;
+}
+
+.security-card-button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+/* Responsive */
+
+@media (max-width: 600px) {
+    .security-card {
+        padding: 20px;
+    }
+
+    .security-card-header {
+        align-items: flex-start;
+    }
+
+    .security-card-status {
+        flex-wrap: wrap;
+    }
+}

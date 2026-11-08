@@ -10,7 +10,7 @@ import RewardsCard from './dashboard/RewardsCard';
 function Dashboard() {
   // temporary data until we connect our database
   const account = {
-    type: "OCBC FRANK Account",
+    type: "REVENT Savings Account",
     accountNumber: "987-545678-876",
     balance: 6700,
     lockedAmount: 10000,

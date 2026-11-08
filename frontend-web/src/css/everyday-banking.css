@@ -97,12 +97,4 @@
     .quick-action {
         gap: 8px;
     }
-
-    .quick-action-text strong {
-        font-size: 12px;
-    }
-
-    .quick-action-text small {
-        font-size: 10px;
-    }
 }

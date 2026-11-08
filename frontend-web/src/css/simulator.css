@@ -143,3 +143,10 @@
         padding: 20px;
     }
 }
+/* for mobile view to make button rest above nav bar*/
+@media (max-width: 768px) {
+    .simulator-container {
+        bottom: calc(96px + env(safe-area-inset-bottom));
+        right: 20px;
+    }
+}

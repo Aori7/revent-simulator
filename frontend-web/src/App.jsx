@@ -3,6 +3,7 @@ import SimulatorBubble from './components/simulator/SimulatorBubble';
 
 import Navbar from './components/navbar';
 import Dashboard from './components/dashboard';
+import MobileNavbar from './components/MobileNavbar';
 
 import Accounts from './pages/Accounts';
 import Transfer from './pages/Transfer';
@@ -14,7 +15,7 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
-
+      <MobileNavbar /> 
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/accounts" element={<Accounts />} />

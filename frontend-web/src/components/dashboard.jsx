@@ -31,20 +31,29 @@ function Dashboard() {
           <span>Balances updated just now</span>
         </div>
       </section>
-
-      {/* Main Dashboard Grid */}
+      {/* main components for dashboard */}
       <div className="dashboard-grid">
-        <div className="dashboard-left">
+        <div className="dashboard-account">
           <AccountCard account={account} />
+        </div>
+
+        <div className="dashboard-cards">
+          <YourCards />
+        </div>
+
+        <div className="dashboard-transactions">
           <RecentTransactions />
         </div>
 
-        <div className="dashboard-right">
-          <YourCards />
+        <div className="dashboard-security">
           <SecurityCard />
+        </div>
+
+        <div className="dashboard-rewards">
           <RewardsCard />
         </div>
-      </div>
+    </div>
+
     </main>
   );
 }

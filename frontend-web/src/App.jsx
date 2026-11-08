@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import SimulatorBubble from './components/simulator/SimulatorBubble';
 
 import Navbar from './components/navbar';
 import Dashboard from './components/dashboard';
@@ -22,6 +23,7 @@ function App() {
         <Route path="/rewards" element={<Rewards />} />
         <Route path="/more" element={<More />} />
       </Routes>
+    <SimulatorBubble />
     </BrowserRouter>
   );
 }

@@ -1,20 +1,13 @@
-import {
-  Send,
-  ScanLine,
-  ArrowLeftRight,
-  ReceiptText,
-  UsersRound,
-  Grid2X2
-} from 'lucide-react';
-
+import {Send,ScanLine,ArrowLeftRight,ReceiptText,UsersRound,Grid2X2} from 'lucide-react';
 import QuickAction from './QuickAction';
+import PayNowQR from '../../assets/PayNowLogo.png';
 
 const bankingActions = [
   {
     id: 'paynow',
     title: 'PayNow',
     description: 'Send instantly',
-    icon: Send
+    icon: PayNowQR
   },
   {
     id: 'scan',

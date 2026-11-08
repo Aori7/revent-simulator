@@ -61,30 +61,49 @@
 }
 
 /* Main Layout */
-
 .dashboard-grid {
     display: grid;
-    grid-template-columns: 2.1fr 1fr;
-    gap: 20px;
-    margin-top: 20px;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    grid-template-areas:
+        "account cards"
+        "transactions security"
+        "transactions rewards";
+
+    gap: 24px;
+    align-items: start;
 }
 
-.dashboard-left,
-.dashboard-right {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.dashboard-account {
+    grid-area: account;
+}
+
+.dashboard-cards {
+    grid-area: cards;
+}
+
+.dashboard-transactions {
+    grid-area: transactions;
+}
+
+.dashboard-security {
+    grid-area: security;
+}
+
+.dashboard-rewards {
+    grid-area: rewards;
 }
 
 /* Responsive */
-
 @media (max-width: 900px) {
     .dashboard-grid {
         grid-template-columns: 1fr;
-    }
 
-    .banking-actions {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas:
+            "account"
+            "cards"
+            "transactions"
+            "security"
+            "rewards";
     }
 }
 

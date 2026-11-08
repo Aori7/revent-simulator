@@ -16,7 +16,17 @@
     color: #777777;
     margin: 0 0 18px;
 }
+.quick-action-image {
+    width: auto;
+    height: 40px;
+    object-fit: contain;
+    display: block;
+}
 
+.quick-action-icon {
+    flex-shrink: 0;
+    overflow: visible;
+}
 /* Actions Layout */
 
 .banking-actions {

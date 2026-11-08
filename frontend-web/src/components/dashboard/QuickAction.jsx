@@ -6,7 +6,15 @@ function QuickAction({ icon: Icon, title, description, onClick }) {
       onClick={onClick}
     >
       <span className="quick-action-icon">
-        <Icon size={23} strokeWidth={1.8} />
+        {typeof Icon === 'string' ? (
+          <img
+            src={Icon}
+            alt=""
+            className="quick-action-image"
+          />
+        ) : (
+          <Icon size={26} strokeWidth={1.8} />
+        )}
       </span>
 
       <span className="quick-action-text">

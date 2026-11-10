@@ -151,3 +151,24 @@
         margin-left: auto;
     }
 }
+
+.recent-transactions-link {
+  text-decoration: none;
+  color: #c21f2b;
+}
+
+.transaction-item {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.transaction-item:hover {
+  background: #fff7f7;
+}
+
+.transaction-item:focus-visible {
+  outline: 2px solid #c21f2b;
+  outline-offset: 3px;
+}

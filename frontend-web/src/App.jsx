@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route, Navigate, Outlet} from 'react-router-dom';
+
+import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import SimulatorBubble from './components/simulator/SimulatorBubble';
 
 import Login from './pages/Login';
@@ -12,7 +13,10 @@ import Cards from './pages/Cards';
 import Rewards from './pages/Rewards';
 import More from './pages/More';
 
-// demo-only route protection
+import TransactionDetails from './pages/TransactionDetails';
+import PaymentReview from './pages/PaymentReview';
+
+// Demo-only route protection
 function DemoProtectedRoute() {
   const isLoggedIn =
     sessionStorage.getItem('reventDemoLogin') === 'true';
@@ -41,16 +45,29 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />} />
+
         <Route element={<DemoProtectedRoute />}>
           <Route element={<BankingLayout />}>
             <Route path="/" element={<Dashboard />} />
             <Route path="/accounts" element={<Accounts />} />
             <Route path="/transfer" element={<Transfer />} />
+
+            {/* Joelle's new routes */}
+            <Route
+              path="/transactions/:transactionId"
+              element={<TransactionDetails />}
+            />
+            <Route
+              path="/transfer/review"
+              element={<PaymentReview />}
+            />
+
             <Route path="/cards" element={<Cards />} />
             <Route path="/rewards" element={<Rewards />} />
             <Route path="/more" element={<More />} />
           </Route>
         </Route>
+
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

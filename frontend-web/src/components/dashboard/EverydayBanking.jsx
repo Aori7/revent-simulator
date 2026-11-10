@@ -1,4 +1,13 @@
-import {Send,ScanLine,ArrowLeftRight,ReceiptText,UsersRound,Grid2X2} from 'lucide-react';
+
+import {
+  ScanLine,
+  ArrowLeftRight,
+  ReceiptText,
+  UsersRound,
+  Grid2X2
+} from 'lucide-react';
+
+import { useNavigate } from 'react-router-dom';
 import QuickAction from './QuickAction';
 import PayNowQR from '../../assets/PayNowLogo.png';
 
@@ -42,6 +51,17 @@ const bankingActions = [
 ];
 
 function EverydayBanking() {
+  const navigate = useNavigate();
+
+  const handleActionClick = (action) => {
+    if (action.id === 'more') {
+      navigate('/more');
+    } else {
+      // Shared payment flow for the prototype
+      navigate('/transfer');
+    }
+  };
+
   return (
     <section className="everyday-banking">
       <h2>EVERYDAY BANKING</h2>
@@ -53,6 +73,7 @@ function EverydayBanking() {
             icon={action.icon}
             title={action.title}
             description={action.description}
+            onClick={() => handleActionClick(action)}
           />
         ))}
       </div>

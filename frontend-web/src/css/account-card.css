@@ -175,3 +175,17 @@
         flex-direction: column;
     }
 }
+
+.account-card-link,
+.account-card-footer {
+  text-decoration: none;
+}
+
+.account-card-link {
+  color: #c21f2b;
+}
+
+.account-card-link:hover,
+.account-card-footer:hover {
+  opacity: 0.8;
+}

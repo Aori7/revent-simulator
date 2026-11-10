@@ -1,27 +1,32 @@
-import { Landmark, LockKeyhole, ChevronRight, ArrowRight } from 'lucide-react';
-import '../../css/account-card.css';
+
+import {
+  Landmark,
+  LockKeyhole,
+  ChevronRight,
+  ArrowRight,
+} from "lucide-react";
+
+import { Link } from "react-router-dom";
+import { maskIdentifier } from "../../utils/banking";
+import "../../css/account-card.css";
 
 function AccountCard({ account }) {
-  const formatMoney = (amount) => {
-    return amount.toLocaleString('en-SG', {
+  const formatMoney = (amount) =>
+    amount.toLocaleString("en-SG", {
       minimumFractionDigits: 2,
-      maximumFractionDigits: 2
+      maximumFractionDigits: 2,
     });
-  };
 
   return (
     <section className="account-card">
-
-      {/* Card Header */}
       <div className="account-card-header">
         <h2>Your Account</h2>
 
-        <span className="account-card-link">
+        <Link to="/accounts" className="account-card-link">
           View all <ArrowRight size={20} />
-        </span>
+        </Link>
       </div>
 
-      {/* Account Information */}
       <div className="account-card-info">
         <div className="account-card-icon">
           <Landmark size={30} />
@@ -29,38 +34,28 @@ function AccountCard({ account }) {
 
         <div className="account-card-identity">
           <h3>{account.type}</h3>
-          <p>{account.accountNumber}</p>
+          <p>{maskIdentifier(account.accountNumber)}</p>
         </div>
 
-        <span className="account-card-currency">
-          SGD
-        </span>
+        <span className="account-card-currency">SGD</span>
       </div>
 
-      {/* Available Balance */}
       <div className="account-card-balance">
         <p>Available Balance</p>
         <h2>SGD {formatMoney(account.balance)}</h2>
       </div>
 
-      {/* Money Lock */}
       <div className="money-lock-card">
         <div className="money-lock-header">
           <h3>
             <LockKeyhole size={25} />
             Money Lock
           </h3>
-
-          <span className="account-card-link">
-            Manage
-          </span>
         </div>
 
         <div className="money-lock-amount">
           <span>Amount Locked</span>
-          <strong>
-            SGD {formatMoney(account.lockedAmount)}
-          </strong>
+          <strong>SGD {formatMoney(account.lockedAmount)}</strong>
         </div>
 
         <p>
@@ -69,12 +64,10 @@ function AccountCard({ account }) {
         </p>
       </div>
 
-      {/* Footer */}
-      <div className="account-card-footer">
+      <Link to="/accounts" className="account-card-footer">
         <span>Account details</span>
         <ChevronRight size={24} />
-      </div>
-
+      </Link>
     </section>
   );
 }

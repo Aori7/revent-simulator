@@ -1,16 +1,42 @@
-# React + Vite
+# REVENT | Frontend 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The frontend for **REVENT**, a digital banking simulator focused on scam prevention and safer financial transactions.
 
-Currently, two official plugins are available:
+Built using **React + Vite**, with responsive layouts for desktop and mobile.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+##  Tech Stack
 
-## React Compiler
+- React
+- Vite
+- JavaScript (JSX)
+- CSS
+- React Router
+- Lucide React
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+##  Getting Started
 
-## Expanding the ESLint configuration
+```bash
+npm install
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Open the local URL displayed in your terminal (usually `http://localhost:5173/`).
+
+##  Features
+
+- Responsive banking dashboard
+- Account balances and transaction history
+- Banking quick actions
+- Desktop and mobile navigation
+- Floating simulation control panel
+- Banking service pages
+
+##  Development Status
+
+**Sprint 1: Frontend Development**
+
+Currently using mock data and frontend-only interactions. Backend and database integration are planned for a later sprint.
+
+---
+
+*Part of the REVENT digital trust project.*

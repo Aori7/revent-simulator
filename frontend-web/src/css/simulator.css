@@ -1,0 +1,152 @@
+
+/* Floating Simulator Container */
+
+.simulator-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 16px;
+}
+
+/* Floating Bubble */
+
+.simulator-bubble {
+    width: 68px;
+    height: 68px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #843f43,
+        #c21f2b
+    );
+
+    color: white;
+    cursor: pointer;
+
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.simulator-bubble:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.28);
+}
+
+/* Simulator Panel */
+
+.simulator-panel {
+    width: 380px;
+    max-width: calc(100vw - 40px);
+    max-height: calc(100dvh - 130px);
+    overflow-y: auto;
+
+    padding: 26px;
+    box-sizing: border-box;
+
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Panel Header */
+
+.simulator-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.simulator-panel-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #202020;
+    margin: 0;
+}
+
+.simulator-demo-badge {
+    background: #fde8ea;
+    color: #c21f2b;
+
+    padding: 6px 12px;
+    border-radius: 20px;
+
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* Description */
+
+.simulator-description {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #666666;
+    margin: 16px 0 24px;
+}
+
+/* Options */
+
+.simulator-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.simulator-option {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 16px;
+    background: #f7f8fa;
+    border-radius: 12px;
+
+    color: #202020;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.simulator-option svg {
+    color: #c21f2b;
+    flex-shrink: 0;
+}
+
+/* Responsive */
+
+@media (max-width: 600px) {
+    .simulator-container {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .simulator-bubble {
+        width: 60px;
+        height: 60px;
+    }
+
+    .simulator-panel {
+        width: min(380px, calc(100vw - 40px));
+        padding: 20px;
+    }
+}
+/* for mobile view to make button rest above nav bar*/
+@media (max-width: 768px) {
+    .simulator-container {
+        bottom: calc(96px + env(safe-area-inset-bottom));
+        right: 20px;
+    }
+}

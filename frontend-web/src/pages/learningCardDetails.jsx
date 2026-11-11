@@ -1,22 +1,125 @@
+import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import {
-  ArrowLeft, ArrowRight, Bookmark, BookmarkCheck, CheckCircle2, Clock3,
-  Info, ListChecks, MessageSquareWarning, ShieldCheck, TriangleAlert
+  ArrowLeft, ArrowRight, Bookmark, BookmarkCheck, CheckCircle2,
+  ChevronLeft, Play, ShieldAlert,
+  ShieldCheck, Video
 } from 'lucide-react';
-import { educationIcons } from '../components/educationIcons';
 import useDemoLearning from '../hooks/useDemoLearning';
-import { scamTopics } from '../data/educationData';
+import { getAwarenessLevel, lessonScenarios, scamTopics } from '../data/educationData';
 import '../css/education.css';
 
-function StepList({ entries, ordered = false }) {
-  const Element = ordered ? 'ol' : 'ul';
+const practiceOptions = [
+  'Follow the instructions because the voice or video seems familiar',
+  'End the conversation and verify using a number or channel I already trust',
+  'Ask the sender to provide another recording as proof'
+];
+
+function LearningCardLesson({ topic, learning, toggleSaved, markCompleted }) {
+  const [screen, setScreen] = useState('scenario');
+  const [practiceChoice, setPracticeChoice] = useState(null);
+
+  const categoryScore = learning.lastReadiness?.categoryScores?.[topic.categoryCode];
+  const percentage = categoryScore?.percentage ?? null;
+  const level = percentage === null ? null : getAwarenessLevel(percentage);
+  // New customers see the beginner explanation as a preview, but no score is invented.
+  const scenarioTier = level ?? 'Beginner';
+  const scenarioSet = lessonScenarios[topic.id];
+  const scenario = scenarioSet?.[scenarioTier] ?? {
+    scene: topic.introduction,
+    redFlags: topic.redFlags,
+    mediaLabel: 'Suspicious request'
+  };
+  const heading = scenarioSet?.heading ?? topic.title;
+  const saved = learning.savedIds.includes(topic.id);
+
+  const finishLesson = () => {
+    markCompleted(topic.id);
+    setScreen('complete');
+  };
+
   return (
-    <Element className={`edu-detail-list ${ordered ? 'edu-detail-ordered' : ''}`}>
-      {entries.map((entry, index) => <li key={entry}>
-        <span className="edu-detail-marker">{ordered ? index + 1 : <CheckCircle2 size={18}/>}</span>
-        <span>{entry}</span>
-      </li>)}
-    </Element>
+    <main className="edu-page edu-lesson-page">
+      <div className="edu-container edu-lesson-shell">
+        {screen !== 'complete' && screen !== 'practice' ? (
+          <>
+            <div className="edu-lesson-topbar">
+              <Link to="/education" className="edu-lesson-back"><ArrowLeft size={19}/><span>{heading}</span></Link>
+            </div>
+            <div className="edu-lesson-score">
+              <div className="edu-lesson-score-top">
+                <span>{level ? 'Your scam awareness level' : 'Your scam awareness level · Not assessed'}</span>
+                {level && <strong className={`edu-lesson-level ${level.toLowerCase()}`}>{level}</strong>}
+              </div>
+              <div className="edu-lesson-score-bottom">
+                <div className={`edu-lesson-progress ${level?.toLowerCase() || ''}`} role="progressbar" aria-label="Latest category awareness score" aria-valuemin={0} aria-valuemax={100} aria-valuenow={percentage ?? 0}>
+                  <span style={{ width: `${percentage ?? 0}%` }}/>
+                </div>
+                <span>{percentage === null ? '—' : `${percentage}%`}</span>
+              </div>
+              {!level && <p className="edu-lesson-unassessed">Showing the beginner scenario. <Link to="/readiness">Take the readiness check</Link> to get your level.</p>}
+            </div>
+            <article className="edu-flip-card">
+              <header className="edu-flip-card-heading">
+                <h1>{screen === 'scenario' ? 'How it unfolds' : 'Red Flags'}</h1>
+                <button type="button" onClick={() => toggleSaved(topic.id)} className="edu-lesson-bookmark" aria-label={saved ? 'Remove saved learning card' : 'Save learning card'} aria-pressed={saved}>
+                  {saved ? <BookmarkCheck size={20}/> : <Bookmark size={20}/>}
+                </button>
+              </header>
+
+              {screen === 'scenario' ? (
+                <>
+                  <div className="edu-lesson-media" role="img" aria-label={`Illustrative placeholder: ${scenario.mediaLabel}`}>
+                    <span className="edu-lesson-media-icon"><Video size={40}/></span>
+                    <span>{scenario.mediaLabel}</span>
+                  </div>
+                  <div className="edu-lesson-content">
+                    <p>{scenario.scene}</p>
+                    <button type="button" className="edu-flip-button" onClick={() => setScreen('redFlags')}>
+                      Tap to reveal the red flags <ArrowRight size={18}/>
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <div className="edu-lesson-flags">
+                  <ul>{scenario.redFlags.map((flag) => <li key={flag}>{flag}</li>)}</ul>
+                  <div className="edu-lesson-flags-actions">
+                    <button className="edu-lesson-finish" type="button" onClick={finishLesson}>I've reviewed the red flags — Finish lesson <CheckCircle2 size={17}/></button>
+                    <button type="button" className="edu-flip-button" onClick={() => setScreen('scenario')}><ChevronLeft size={18}/> Tap to look back at the scenario</button>
+                  </div>
+                </div>
+              )}
+            </article>
+            <p className="edu-lesson-note">The scenario is fictional and used for education. A familiar face or voice alone is not proof of identity.</p>
+          </>
+        ) : screen === 'complete' ? (
+          <div className="edu-lesson-done" role="status">
+            <span className="edu-done-icon"><CheckCircle2 size={53}/></span>
+            <p className="edu-done-percentage">100%</p>
+            <h1>Lesson Complete!</h1>
+            <p>You've learned how this scam may unfold, which warning signs to recognise and why it's important to verify independently.</p>
+            <button type="button" className="edu-done-action" onClick={() => { setPracticeChoice(null); setScreen('practice'); }}>Practise with a Scam Scenario <Play size={17}/></button>
+            <Link className="edu-done-back" to="/education">Back to learning cards</Link>
+            <small>100% refers to this lesson's completion, not your readiness assessment score.</small>
+          </div>
+        ) : (
+          <section className="edu-lesson-practice">
+            <button type="button" className="edu-lesson-back" onClick={() => setScreen('complete')}><ChevronLeft size={18}/> Back to lesson</button>
+            <span className="edu-section-eyebrow">INTERACTIVE PRACTICE PREVIEW</span>
+            <h1>What would you do?</h1>
+            <p>A person who seems familiar asks you to send money urgently. The voice or video looks convincing, but the contact details are unfamiliar.</p>
+            <div className="edu-practice-options" role="group" aria-label="Choose your response">
+              {practiceOptions.map((option, index) => <button key={option} type="button" className={practiceChoice === index ? 'selected' : ''} aria-pressed={practiceChoice === index} onClick={() => setPracticeChoice(index)}>{option}</button>)}
+            </div>
+            {practiceChoice !== null && <div className={`edu-practice-feedback ${practiceChoice === 1 ? 'correct' : ''}`} role="status">
+              {practiceChoice === 1 ? <ShieldCheck size={20}/> : <ShieldAlert size={20}/>}<p>{practiceChoice === 1 ? 'Good choice. Verify through an independent, trusted channel before transferring any money.' : 'That could still be a scam. AI can imitate a face or voice, and another recording is not independent verification.'}</p>
+            </div>}
+            <div className="edu-practice-actions"><button type="button" onClick={() => setPracticeChoice(null)}>Try again</button><Link to="/readiness">Take full readiness check <ArrowRight size={16}/></Link></div>
+            <p className="edu-lesson-note">This is a hardcoded scenario preview; it does not change your readiness score or connect to Twine.</p>
+          </section>
+        )}
+      </div>
+    </main>
   );
 }
 
@@ -26,61 +129,11 @@ function EducationDetail() {
   const { learning, toggleSaved, markCompleted } = useDemoLearning();
 
   if (!topic) {
-    return <main className="edu-page"><div className="edu-container edu-not-found"><h1>Guide not found</h1><p>This topic may have been moved.</p><Link to="/education">Back to Education</Link></div></main>;
+    return <main className="edu-page"><div className="edu-container edu-not-found"><h1>Learning card not found</h1><Link to="/education">Back to Scam Education</Link></div></main>;
   }
 
-  const Icon = educationIcons[topic.icon];
-  const saved = learning.savedIds.includes(topic.id);
-  const completed = learning.completedIds.includes(topic.id);
-  const recommended = scamTopics.filter((item) => item.id !== topic.id && item.category === topic.category).slice(0, 2);
-
-  return (
-    <main className="edu-page edu-detail-page">
-      <div className="edu-container edu-detail-container">
-        <Link className="edu-back-link" to="/education"><ArrowLeft size={18}/> Back to Scam Education</Link>
-        <header className="edu-detail-header">
-          <div>
-            <span className="edu-eyebrow">SCAM EDUCATION / {topic.category.toUpperCase()}</span>
-            <h1>{topic.title} Scam</h1>
-            <div className="edu-detail-badges"><span><Clock3 size={16}/> {topic.minutes} min read</span><span>{topic.difficulty}-friendly</span></div>
-          </div>
-          <button type="button" className="edu-detail-bookmark" onClick={() => toggleSaved(topic.id)} aria-pressed={saved}>
-            {saved ? <BookmarkCheck size={19}/> : <Bookmark size={19}/>} {saved ? 'Saved' : 'Save guide'}
-          </button>
-        </header>
-
-        <section className="edu-detail-intro">
-          <div><span>KNOW THE PATTERN</span><p>{topic.introduction}</p></div>
-          <div className="edu-detail-intro-art" aria-hidden="true"><Icon size={82}/><ShieldCheck size={37}/></div>
-        </section>
-
-        <section className="edu-detail-section">
-          <div className="edu-detail-title"><span className="edu-detail-title-icon"><Info size={21}/></span><div><h2>How it unfolds</h2><p>How a scammer might approach you</p></div></div>
-          <StepList entries={topic.unfolds} ordered/>
-        </section>
-        <section className="edu-detail-section edu-warning-section">
-          <div className="edu-detail-title"><span className="edu-detail-title-icon"><TriangleAlert size={23}/></span><div><h2>Common red flags</h2><p>Pause when you notice any of these signs</p></div></div>
-          <div className="edu-redflag-grid">{topic.redFlags.map((flag) => <div className="edu-redflag" key={flag}><TriangleAlert size={18}/><p>{flag}</p></div>)}</div>
-        </section>
-        <section className="edu-detail-section">
-          <div className="edu-detail-title"><span className="edu-detail-title-icon edu-positive"><ShieldCheck size={23}/></span><div><h2>How to verify independently</h2><p>Simple steps to confirm a request is genuine</p></div></div>
-          <StepList entries={topic.verify}/>
-        </section>
-        <section className="edu-detail-section">
-          <div className="edu-detail-title"><span className="edu-detail-title-icon"><ListChecks size={23}/></span><div><h2>What to do next</h2><p>If something feels suspicious</p></div></div>
-          <StepList entries={topic.next} ordered/>
-        </section>
-        <section className="edu-message-example"><MessageSquareWarning size={26}/><div><h2>Example suspicious message</h2><blockquote>{topic.example}</blockquote><p>Fictional example for awareness practice.</p></div></section>
-        <section className="edu-detail-finish">
-          <div><h2>{completed ? 'Guide marked as read' : 'Finished reading?'}</h2><p>{completed ? 'You can revisit this guide whenever you need a reminder.' : 'Mark this guide as read to track your learning on this device.'}</p></div>
-          <button type="button" className="edu-primary-button" onClick={() => markCompleted(topic.id)} disabled={completed}>
-            <CheckCircle2 size={18}/> {completed ? 'Completed' : 'Mark as read'}
-          </button>
-        </section>
-        {recommended.length > 0 && <section className="edu-detail-related"><h2>Keep learning</h2><div>{recommended.map((item) => <Link key={item.id} to={`/education/${item.id}`}>{item.title}<ArrowRight size={18}/></Link>)}</div></section>}
-        <p className="edu-demo-note">Educational prototype. Contact your bank using official channels if you suspect an actual scam.</p>
-      </div>
-    </main>
-  );
+  // A new component instance when the URL's topic changes resets the flip-card state.
+  return <LearningCardLesson key={topic.id} topic={topic} learning={learning} toggleSaved={toggleSaved} markCompleted={markCompleted}/>;
 }
+
 export default EducationDetail;

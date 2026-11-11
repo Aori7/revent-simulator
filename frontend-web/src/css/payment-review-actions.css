@@ -1,0 +1,70 @@
+/* Separate cancellation from the edit and save actions. */
+.flow-save-card > .flow-button-row {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e2e6ec;
+}
+
+/* Cancel payment is the direct button below the edit/save row. */
+.flow-save-card > .flow-back-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  width: fit-content;
+  margin: 0;
+  padding: 8px 14px;
+  border: 1px solid #e6c4c8;
+  border-radius: 8px;
+  background: #fff;
+  color: #a82232;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.3;
+  cursor: pointer;
+}
+
+.flow-save-card > .flow-back-button:hover:not(:disabled) {
+  border-color: #c9828b;
+  background: #fff4f5;
+}
+
+.flow-save-card > .flow-back-button:focus-visible {
+  outline: 3px solid #a82232;
+  outline-offset: 3px;
+}
+
+.flow-save-card > .flow-back-button:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+/* The confirmation panel occupies the same row after cancellation is selected. */
+.flow-save-card > [role="group"][aria-label="Confirm cancellation"] {
+  margin: 0;
+  padding: 16px 18px;
+  border: 1px solid #ebcdd1;
+  border-radius: 12px;
+  background: #fff8f8;
+  box-shadow: none;
+}
+
+.flow-save-card > [role="group"] h3 {
+  margin: 0 0 6px;
+}
+
+.flow-save-card > [role="group"] p {
+  margin: 0 0 14px;
+}
+
+.flow-save-card > [role="group"] .flow-button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Bring the browser-session note closer to the actions. */
+.flow-save-card > .flow-small:last-child {
+  margin: 18px 0 0;
+}

@@ -1,4 +1,3 @@
-
 export function formatSGD(amount) {
   return `SGD ${Math.abs(Number(amount)).toLocaleString("en-SG", {
     minimumFractionDigits: 2,
@@ -11,22 +10,21 @@ export function maskIdentifier(value) {
 
   if (!clean) return "Not available";
 
-  return (
-    "•".repeat(Math.max(4, clean.length - 4)) +
-    clean.slice(-4)
-  );
+  return "•".repeat(Math.max(4, clean.length - 4)) + clean.slice(-4);
 }
 
 export function draftSignature(draft) {
   return JSON.stringify({
     recipientName: (draft.recipientName || "").trim(),
-    recipientNumber: (draft.recipientNumber || "").replace(/\s/g, ""),
+    recipientNumber: (draft.recipientNumber || "").replace(/[\s-]/g, ""),
     amount: Number(draft.amount).toFixed(2),
     reference: (draft.reference || "").trim(),
   });
 }
 
 export const defaultAnswers = {
+  extraFee: "",
+  disclosed: "",
   source: "",
   identity: "",
   urgency: "",
@@ -36,12 +34,12 @@ export const defaultAnswers = {
 
 export function visibleQuestions(answers) {
   return [
+    "extraFee",
+    ...(answers.extraFee === "yes" ? ["disclosed"] : []),
     "source",
     "identity",
     "urgency",
-    ...(["social", "unknown"].includes(answers.source)
-      ? ["reviews"]
-      : []),
+    ...(["social", "unknown"].includes(answers.source) ? ["reviews"] : []),
     ...(answers.urgency === "yes" ? ["secrecy"] : []),
   ];
 }
@@ -65,6 +63,29 @@ export function generatePaymentAdvice(answers) {
   const concerns = [];
   const steps = [];
 
+  if (answers.extraFee === "unsure" || answers.disclosed === "unsure") {
+    concerns.push(
+      "It is unclear whether an additional fee was requested or disclosed."
+    );
+    steps.push(
+      "Compare the request with your original order and check the amount with the seller independently."
+    );
+  }
+
+  if (answers.extraFee === "yes" && answers.disclosed === "no") {
+    concerns.push(
+      "The seller requested a fee that was not disclosed before your earlier payment."
+    );
+    steps.push(
+      "Check the original invoice and verify the extra charge through the marketplace before paying."
+    );
+  }
+
+  if (answers.urgency === "unsure") {
+    concerns.push("You are unsure whether you are being pressured to pay.");
+    steps.push("Take time to check the request independently.");
+  }
+
   if (["social", "unknown"].includes(answers.source)) {
     concerns.push(
       "The seller was found through a channel where identities can be difficult to verify."
@@ -75,9 +96,7 @@ export function generatePaymentAdvice(answers) {
   }
 
   if (answers.reviews === "no" || answers.reviews === "unsure") {
-    concerns.push(
-      "Independent seller feedback has not been confirmed."
-    );
+    concerns.push("Independent seller feedback has not been confirmed.");
     steps.push(
       "Check independent reviews and whether the merchant has an established history."
     );
@@ -93,9 +112,7 @@ export function generatePaymentAdvice(answers) {
   }
 
   if (answers.urgency === "yes") {
-    concerns.push(
-      "Pressure to pay quickly is a common scam warning sign."
-    );
+    concerns.push("Pressure to pay quickly is a common scam warning sign.");
     steps.push(
       "Pause the payment. A legitimate seller should allow time for verification."
     );

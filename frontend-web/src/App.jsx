@@ -21,6 +21,9 @@ import TransactionDetails from "./pages/TransactionDetails";
 import PaymentReview from "./pages/PaymentReview";
 import PaymentConfirmation from "./pages/PaymentConfirmation";
 
+
+import ScamChatbot from "./pages/ScamChatbot";
+
 function DemoProtectedRoute() {
   const isLoggedIn = sessionStorage.getItem("reventDemoLogin") === "true";
 
@@ -44,6 +47,14 @@ export default function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
 
+        {/* Temporary chatbot preview with existing navbar */}
+  <Route element={<BankingLayout />}>
+    <Route
+      path="/scam-chatbot-preview"
+      element={<ScamChatbot />}
+    />
+  </Route>
+
         <Route element={<DemoProtectedRoute />}>
           <Route element={<BankingLayout />}>
             <Route path="/" element={<Dashboard />} />
@@ -61,6 +72,7 @@ export default function App() {
             <Route path="/cards" element={<Cards />} />
             <Route path="/rewards" element={<Rewards />} />
             <Route path="/more" element={<More />} />
+            <Route path="/scam-chatbot" element={<ScamChatbot />} />
           </Route>
         </Route>
 

@@ -1,41 +1,257 @@
 /* navbar container */
+
 .navbar {
+    width: 100%;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e5e5;
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+}
+
+/* top nav */
+.navbar-top {
+    min-height: 70px;
+    padding: 0 5%;
+
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 10px 30px;
+    align-items: center;
+    gap: 24px;
 
-    background-color: var(--w);
-    border-bottom: 1px solid var(--border-grey);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid #eeeeee;
 }
 
-.navbar-logo img {
-    width: 100px;
-    height: auto;
-    object-fit: contain;
-}
-/* Logo */
-.navbar-logo h1 {
-    color: var(--red-ocbc);
-    margin: 0;
-}
+/* Branding */
 
-/* Navigation links */
-.navbar-links {
+.navbar-brand {
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 18px;
+    flex-shrink: 0;
 }
 
-.navbar-links a {
-    text-decoration: none;
-    color: var(--black-ocbc);
+.navbar-brand .revent-logo {
+    font-size: 65px;
+    line-height: 0.8;
 }
 
-/* Profile section */
+.navbar-brand-divider {
+    height: 25px;
+    width: 1px;
+    background-color: #dddddd;
+}
+
+.navbar-brand-label {
+    font-size: 20px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Right-side controls */
+
+.navbar-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.navbar-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background-color: #f8f9fa;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+
+    padding: 9px 12px;
+    color: #777777;
+}
+
+.navbar-search input {
+    border: none;
+    outline: none;
+    background: transparent;
+
+    font-family: inherit;
+    font-size: 20px;
+    width: 300px;
+}
+
+.navbar-icon-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+    border: none;
+    color: #666666;
+    cursor: pointer;
+    padding: 6px;
+}
+
+.navbar-icon-button:hover {
+    color: #ee2722;
+}
+
+/* Profile */
+
 .navbar-profile {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 9px;
+
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.navbar-avatar {
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #fde8ea;
+    color: #ee2722;
+    border-radius: 50%;
+    font-weight: 500;
+}
+
+/* Logout */
+
+.navbar-logout {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    background: transparent;
+    border: none;
+
+    color: #ee2722;
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* bottom nav */
+
+.navbar-bottom {
+    min-height: 46px;
+    padding: 0 5%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.navbar-links {
+    display: flex;
+    align-items: stretch;
+    gap: 32px;
+}
+
+.navbar-links a {
+    display: flex;
+    align-items: center;
+
+    color: #555555;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+
+    transition: color 0.2s;
+}
+
+.navbar-links a:hover {
+    color: #ee2722;
+}
+
+.navbar-links a.active {
+    color: #ee2722;
+    border-bottom-color: #ee2722;
+}
+
+/* AI Chatbot */
+.navbar-chatbot {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #ee2722;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* responsive design*/
+@media (max-width: 1100px) {
+    .navbar-search {
+        display: none;
+    }
+
+    .navbar-links {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 800px) {
+    .navbar-top {
+        padding: 12px 4%;
+        flex-wrap: wrap;
+    }
+
+    .navbar-controls {
+        gap: 10px;
+    }
+
+    .navbar-brand-label {
+        display: none;
+    }
+
+    .navbar-brand-divider {
+        display: none;
+    }
+
+    .navbar-bottom {
+        padding: 0 4%;
+        overflow-x: auto;
+    }
+
+    .navbar-links {
+        gap: 22px;
+    }
+
+    .navbar-chatbot {
+        padding-left: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-profile > span:not(.navbar-avatar),
+    .navbar-profile > svg,
+    .navbar-logout > span {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-bottom {
+        display: none;
+    }
+
+    .navbar-top {
+        min-height: 70px;
+    }
 }

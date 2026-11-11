@@ -1,0 +1,119 @@
+/* Main Rewards Card */
+
+.rewards-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 28px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Header */
+
+.rewards-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.rewards-card-header h2 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #202020;
+    margin: 0;
+}
+
+.rewards-card-icon {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #fff3db;
+    color: #b7791f;
+    border-radius: 14px;
+}
+
+/* Reward Points */
+
+.rewards-card-points p {
+    font-size: 20px;
+    color: #777777;
+    margin: 0 0 10px;
+}
+
+.rewards-card-points h3 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #202020;
+    margin: 0;
+}
+
+.rewards-card-points h3 span {
+    font-size: 20px;
+    font-weight: 500;
+    color: #777777;
+}
+
+/* Rewards Highlight */
+
+.rewards-card-highlight {
+    background: #fff8ea;
+    border-radius: 12px;
+    padding: 22px;
+}
+
+.rewards-card-highlight h3 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-size: 22px;
+    font-weight: 600;
+    color: #80561b;
+
+    margin: 0 0 12px;
+}
+
+.rewards-card-highlight p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #80561b;
+    margin: 0;
+}
+
+/* Footer */
+
+.rewards-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+
+    font-size: 20px;
+    font-weight: 600;
+    color: #c21f2b;
+}
+
+/* Responsive */
+
+@media (max-width: 600px) {
+    .rewards-card {
+        padding: 20px;
+    }
+
+    .rewards-card-points h3 {
+        font-size: 32px;
+    }
+}

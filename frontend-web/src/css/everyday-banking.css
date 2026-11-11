@@ -1,0 +1,110 @@
+/* Everyday Banking Container */
+
+.everyday-banking {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.everyday-banking h2 {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    color: #777777;
+    margin: 0 0 18px;
+}
+.quick-action-image {
+    width: auto;
+    height: 40px;
+    object-fit: contain;
+    display: block;
+}
+
+.quick-action-icon {
+    flex-shrink: 0;
+    overflow: visible;
+}
+/* Actions Layout */
+
+.banking-actions {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 12px;
+}
+
+/* Individual Quick Action */
+
+.quick-action {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 10px 4px;
+    border: none;
+    border-radius: 9px;
+    background: transparent;
+
+    text-align: left;
+    font-family: inherit;
+    cursor: pointer;
+    min-width: 0;
+
+    transition: background-color 0.2s;
+}
+
+.quick-action:hover {
+    background: #f8f8f8;
+}
+
+.quick-action-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+
+    background: #f7f8fa;
+    color: #ee2722;
+    border-radius: 9px;
+}
+
+.quick-action-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.quick-action-text strong {
+    font-size: 20px;
+    font-weight: 600;
+    color: #202020;
+}
+
+.quick-action-text small {
+    font-size: 18px;
+    color: #777777;
+}
+
+/* Responsive */
+
+@media (max-width: 1100px) {
+    .banking-actions {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .banking-actions {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .quick-action {
+        gap: 8px;
+    }
+}

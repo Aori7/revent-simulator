@@ -16,6 +16,7 @@ import Accounts from "./pages/Accounts";
 import Transfer from "./pages/Transfer";
 import Cards from "./pages/Cards";
 import Rewards from "./pages/Rewards";
+
 import Education from "./pages/Education";
 import LearningCardDetails from "./pages/learningCardDetails";
 import AwarenessLevel from "./pages/awarenessLevel";

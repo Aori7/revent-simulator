@@ -16,7 +16,6 @@ import Accounts from "./pages/Accounts";
 import Transfer from "./pages/Transfer";
 import Cards from "./pages/Cards";
 import Rewards from "./pages/Rewards";
-
 import Education from "./pages/Education";
 import LearningCardDetails from "./pages/learningCardDetails";
 import AwarenessLevel from "./pages/awarenessLevel";
@@ -87,7 +86,7 @@ export default function App() {
               element={<TransactionDetails />}
             />
             <Route path="/cards" element={<Cards />} />
-            <Route path="/rewards" element={<Rewards />} />
+            <Route path="/rewards/*" element={<Rewards />} />
             <Route path="/education" element={<Education />} />
             <Route
               path="/education/:topicId"

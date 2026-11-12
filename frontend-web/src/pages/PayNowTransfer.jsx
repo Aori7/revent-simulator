@@ -15,6 +15,7 @@ import useTransactionRisk from "../hooks/useTransactionRisk";
 import { saveRiskAssessment } from "../utils/riskSession";
 import { saveDraft } from "../utils/demoSession";
 import { demoAccount } from "../data/demoBanking";
+import { usePaymentBehaviour } from "../context/PaymentBehaviourContext";
 
 // simulated PayNow directory for prototype testing
 const demoRecipients = {
@@ -36,6 +37,7 @@ export default function PayNowTransfer() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const { assess } = useTransactionRisk();
+  const { recordPaymentClick } = usePaymentBehaviour();
   function lookupRecipient() {
     const cleaned = mobile.replace(/\D/g, "");
 
@@ -242,6 +244,15 @@ export default function PayNowTransfer() {
           Demo only. No real PayNow lookup or money transfer occurs.
         </p>
       </div>
+      <form
+        className="paynow-card"
+        onClick={(event) => {
+          if (event.target.closest("button")) {
+            recordPaymentClick();
+          }
+        }}
+        onSubmit={submit}
+      ></form>
     </main>
   );
 }

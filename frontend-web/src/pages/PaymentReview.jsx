@@ -30,6 +30,7 @@ import {
 } from "../utils/demoSession";
 import usePaymentRestriction from "../utils/usePaymentRestriction";
 import "../css/banking-flow.css";
+import { usePaymentBehaviour } from "../context/PaymentBehaviourContext";
 
 const yesNo = [
   ["yes", "Yes"],
@@ -107,6 +108,8 @@ export default function PaymentReview() {
   const savingRef = useRef(false);
   const timerRef = useRef(null);
   const cancelPending = useRef(false);
+
+  const { recordPaymentClick } = usePaymentBehaviour();
 
   useEffect(() => {
     return () => {
@@ -221,7 +224,14 @@ export default function PaymentReview() {
   const advice = showSummary ? generatePaymentAdvice(answers) : null;
 
   return (
-    <main className="flow-page">
+    <main
+      className="flow-page"
+      onClick={(event) => {
+        if (event.target.closest("button")) {
+          recordPaymentClick();
+        }
+      }}
+    >
       <div className="flow-shell flow-narrow">
         <button
           type="button"

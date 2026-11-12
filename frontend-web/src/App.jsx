@@ -75,7 +75,7 @@ export default function App() {
               element={<TransactionDetails />}
             />
             <Route path="/cards" element={<Cards />} />
-            <Route path="/rewards" element={<Rewards />} />
+            <Route path="/rewards/*" element={<Rewards />} />
             <Route path="/education" element={<Education />} />
             <Route path="/education/:topicId" element={<LearningCardDetails />} />
             <Route path="/awareness" element={<AwarenessLevel />} />

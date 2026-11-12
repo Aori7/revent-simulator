@@ -1,6 +1,5 @@
 /**
  * REVENT frontend-only educational examples.
- * Replace these with reviewed database content when the backend is ready.
  * None of the items below represents a live scam alert.
  */
 export const scamTopics = [
@@ -315,7 +314,6 @@ export const awarenessCategories = [
 
 /**
  * Demo-only readiness questions. Correct options should NOT be sent to React
- * after real Supabase / Express integration: move grading into the backend.
  */
 export const readinessQuestions = [
   { id: 1, category: 'FAMILY', text: 'A new number says it belongs to your daughter and asks you to PayNow $500 urgently. What is the safest first step?', options: ['Transfer the money immediately', 'Call her usual number to verify', 'Ask the new number for its PayNow name', 'I am not sure'], correct: 1, feedback: 'Verify using an existing contact method before considering any payment.' },

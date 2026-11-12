@@ -20,7 +20,7 @@ import Rewards from "./pages/Rewards";
 import Education from "./pages/Education";
 import LearningCardDetails from "./pages/learningCardDetails";
 import AwarenessLevel from "./pages/awarenessLevel";
-import ReadinessCheck from "./pages/readinessCheck';
+import ReadinessCheck from "./pages/readinessCheck";
 import More from "./pages/More";
 
 import TransactionDetails from "./pages/TransactionDetails";
@@ -28,6 +28,8 @@ import PaymentReview from "./pages/PaymentReview";
 import PaymentConfirmation from "./pages/PaymentConfirmation";
 
 import ScamChatbot from "./pages/ScamChatbot";
+
+import TransactionReview from "./pages/TransactionReview";
 
 // Demo-only route protection
 function DemoProtectedRoute() {
@@ -67,6 +69,12 @@ export default function App() {
             <Route path="/accounts" element={<Accounts />} />
             <Route path="/transfer" element={<Transfer />} />
             <Route path="/transfer/review" element={<PaymentReview />} />
+
+            <Route
+              path="/transfer/transaction-review"
+              element={<TransactionReview />}
+            />
+
             <Route
               path="/transfer/confirmation"
               element={<PaymentConfirmation />}

@@ -31,6 +31,8 @@ import ScamChatbot from "./pages/ScamChatbot";
 
 import RiskTest from "./components/simulator/RiskTest";
 import TransferHub from "./pages/TransferHub";
+import PayNowTransfer from "./pages/PayNowTransfer";
+
 // Demo-only route protection
 function DemoProtectedRoute() {
   const isLoggedIn = sessionStorage.getItem("reventDemoLogin") === "true";
@@ -54,7 +56,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />} />
-        
+
         {/* Temporary chatbot preview with existing navbar */}
         <Route element={<BankingLayout />}>
           <Route path="/scam-chatbot-preview" element={<ScamChatbot />} />
@@ -63,11 +65,11 @@ export default function App() {
         <Route element={<DemoProtectedRoute />}>
           <Route element={<BankingLayout />}>
             <Route path="/" element={<Dashboard />} />
-          <Route path="/risk-test" element={<RiskTest />} />
-
+            <Route path="/risk-test" element={<RiskTest />} />
+            <Route path="/transfer/paynow" element={<PayNowTransfer />} />
             <Route path="/accounts" element={<Accounts />} />
             <Route path="/transfer" element={<TransferHub />} />
-            <Route path="/transfer/ecommerce" element={<Transfer />} /> 
+            <Route path="/transfer/ecommerce" element={<Transfer />} />
             <Route path="/transfer/review" element={<PaymentReview />} />
             <Route
               path="/transfer/confirmation"

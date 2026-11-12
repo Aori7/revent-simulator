@@ -29,6 +29,8 @@ import PaymentConfirmation from "./pages/PaymentConfirmation";
 
 import ScamChatbot from "./pages/ScamChatbot";
 
+import RiskTest from "./components/simulator/RiskTest";
+
 // Demo-only route protection
 function DemoProtectedRoute() {
   const isLoggedIn = sessionStorage.getItem("reventDemoLogin") === "true";
@@ -52,18 +54,17 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />} />
-
+        
         {/* Temporary chatbot preview with existing navbar */}
-  <Route element={<BankingLayout />}>
-    <Route
-      path="/scam-chatbot-preview"
-      element={<ScamChatbot />}
-    />
-  </Route>
+        <Route element={<BankingLayout />}>
+          <Route path="/scam-chatbot-preview" element={<ScamChatbot />} />
+        </Route>
 
         <Route element={<DemoProtectedRoute />}>
           <Route element={<BankingLayout />}>
             <Route path="/" element={<Dashboard />} />
+          <Route path="/risk-test" element={<RiskTest />} />
+
             <Route path="/accounts" element={<Accounts />} />
             <Route path="/transfer" element={<Transfer />} />
             <Route path="/transfer/review" element={<PaymentReview />} />
@@ -78,7 +79,10 @@ export default function App() {
             <Route path="/cards" element={<Cards />} />
             <Route path="/rewards" element={<Rewards />} />
             <Route path="/education" element={<Education />} />
-            <Route path="/education/:topicId" element={<LearningCardDetails />} />
+            <Route
+              path="/education/:topicId"
+              element={<LearningCardDetails />}
+            />
             <Route path="/awareness" element={<AwarenessLevel />} />
             <Route path="/readiness" element={<ReadinessCheck />} />
             <Route path="/more" element={<More />} />

@@ -3,13 +3,14 @@ import { activeDraft, canConfirm } from "../utils/demoSession";
 import { formatSGD, maskIdentifier } from "../utils/banking";
 import usePaymentRestriction from "../utils/usePaymentRestriction";
 import "../css/banking-flow.css";
+import { getRiskAssessment } from "../utils/riskSession";
 
 export default function PaymentConfirmation() {
   // Re-check eligibility if the simulator changes a restriction on this page.
   usePaymentRestriction();
 
   const draft = activeDraft();
-
+  const risk = getRiskAssessment();
   if (!draft) return <Navigate to="/transfer" replace />;
   if (!canConfirm()) return <Navigate to="/transfer/review" replace />;
 
@@ -35,7 +36,11 @@ export default function PaymentConfirmation() {
             </div>
           </dl>
 
-          <p>Your safety review is complete. No payment has been sent.</p>
+          <p>
+            {risk?.level === "low"
+              ? "Your transaction has passed the initial risk assessment. No payment has been sent."
+              : "Your safety review is complete. No payment has been sent."}
+          </p>
 
           <div className="flow-button-row">
             <Link className="flow-button flow-button-secondary" to="/transfer">

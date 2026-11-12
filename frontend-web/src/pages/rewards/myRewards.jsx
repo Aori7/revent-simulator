@@ -1,4 +1,4 @@
-import { formatDate, getStatus } from '../.. /utils/rewardsHelpers';
+import { formatDate, getStatus } from '../../utils/rewardsHelpers';
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ChevronDown, Ticket } from 'lucide-react';

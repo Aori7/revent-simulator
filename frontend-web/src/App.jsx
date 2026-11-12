@@ -32,6 +32,7 @@ import RiskTest from "./components/simulator/RiskTest";
 import TransferHub from "./pages/TransferHub";
 import PayNowTransfer from "./pages/PayNowTransfer";
 // import TransactionReview from "./pages/TransactionReview";
+import { usePaymentBehaviour } from "./context/PaymentBehaviourContext";
 
 // Demo-only route protection
 function DemoProtectedRoute() {
@@ -40,16 +41,32 @@ function DemoProtectedRoute() {
   return isLoggedIn ? <Outlet /> : <Navigate to="/login" replace />;
 }
 
+
 function BankingLayout() {
+  const { recordPaymentClick } = usePaymentBehaviour();
+
+  function handlePaymentInteraction(event) {
+    // Only monitor interactions within payment pages
+    const isPaymentPage = window.location.pathname.startsWith("/transfer");
+
+    if (!isPaymentPage) return;
+
+    // Ignore clicks on the simulator
+    if (event.target.closest(".simulator-bubble")) return;
+
+    recordPaymentClick();
+  }
+
   return (
-    <>
+    <div onClickCapture={handlePaymentInteraction}>
       <Navbar />
-      <MobileNavbar />
       <Outlet />
+      <MobileNavbar />
       <SimulatorBubble />
-    </>
+    </div>
   );
 }
+
 
 export default function App() {
   return (

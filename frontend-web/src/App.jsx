@@ -29,6 +29,8 @@ import PaymentConfirmation from "./pages/PaymentConfirmation";
 
 import ScamChatbot from "./pages/ScamChatbot";
 
+import TransactionReview from "./pages/TransactionReview";
+
 // Demo-only route protection
 function DemoProtectedRoute() {
   const isLoggedIn = sessionStorage.getItem("reventDemoLogin") === "true";
@@ -67,6 +69,12 @@ export default function App() {
             <Route path="/accounts" element={<Accounts />} />
             <Route path="/transfer" element={<Transfer />} />
             <Route path="/transfer/review" element={<PaymentReview />} />
+
+            <Route
+              path="/transfer/transaction-review"
+              element={<TransactionReview />}
+            />
+
             <Route
               path="/transfer/confirmation"
               element={<PaymentConfirmation />}

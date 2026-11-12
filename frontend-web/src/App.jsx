@@ -32,6 +32,7 @@ import ScamChatbot from "./pages/ScamChatbot";
 import RiskTest from "./components/simulator/RiskTest";
 import TransferHub from "./pages/TransferHub";
 import PayNowTransfer from "./pages/PayNowTransfer";
+import TransactionReview from "./pages/TransactionReview";
 
 // Demo-only route protection
 function DemoProtectedRoute() {
@@ -71,6 +72,12 @@ export default function App() {
             <Route path="/transfer" element={<TransferHub />} />
             <Route path="/transfer/ecommerce" element={<Transfer />} />
             <Route path="/transfer/review" element={<PaymentReview />} />
+
+            <Route
+              path="/transfer/transaction-review"
+              element={<TransactionReview />}
+            />
+
             <Route
               path="/transfer/confirmation"
               element={<PaymentConfirmation />}

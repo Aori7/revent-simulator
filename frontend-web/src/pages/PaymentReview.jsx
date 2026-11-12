@@ -41,7 +41,8 @@ const yesNoUnsure = [...yesNo, ["unsure", "Not sure"]];
 const questions = [
   {
     id: "extraFee",
-    label: "Has the seller requested an additional fee after an earlier payment?",
+    label:
+      "Has the seller requested an additional fee after an earlier payment?",
     options: yesNoUnsure,
   },
   {
@@ -69,14 +70,16 @@ const questions = [
   },
   {
     id: "urgency",
-    label: "Are you being pressured to pay before independently checking the request?",
+    label:
+      "Are you being pressured to pay before independently checking the request?",
     description: "Examples include threats, countdowns or urgent requests.",
     options: yesNoUnsure,
   },
   {
     id: "reviews",
     label: "Have you checked independent seller reviews or history?",
-    description: "This question appears when extra seller verification may help.",
+    description:
+      "This question appears when extra seller verification may help.",
     options: yesNoUnsure,
   },
   {
@@ -184,7 +187,7 @@ export default function PaymentReview() {
   function finishReview() {
     try {
       completeReview(draft, answers);
-      navigate("/transfer/transaction-review"); //modified this line
+      navigate("/transfer/confirmation");
     } catch (err) {
       setActionError(err.message);
     }
@@ -212,7 +215,9 @@ export default function PaymentReview() {
   if (!draft) return <Navigate to="/transfer" replace />;
 
   const visibleIds = visibleQuestions(answers);
-  const visible = questions.filter((question) => visibleIds.includes(question.id));
+  const visible = questions.filter((question) =>
+    visibleIds.includes(question.id),
+  );
   const advice = showSummary ? generatePaymentAdvice(answers) : null;
 
   return (
@@ -236,7 +241,8 @@ export default function PaymentReview() {
         </div>
 
         <div className="flow-demo-bar">
-          Prototype · Guided review uses predefined rules, not AI or live fraud detection.
+          Prototype · Guided review uses predefined rules, not AI or live fraud
+          detection.
         </div>
 
         <section className="flow-panel flow-summary-card">
@@ -273,8 +279,8 @@ export default function PaymentReview() {
           </div>
 
           <p className="flow-muted">
-            Your answers help highlight potential warning signs.
-            Additional questions appear when relevant.
+            Your answers help highlight potential warning signs. Additional
+            questions appear when relevant.
           </p>
 
           {visible.map((question, index) => (
@@ -351,10 +357,16 @@ export default function PaymentReview() {
 
             <div
               className={`flow-risk-note ${
-                advice.needsExtraCare ? "flow-risk-warning" : "flow-risk-neutral"
+                advice.needsExtraCare
+                  ? "flow-risk-warning"
+                  : "flow-risk-neutral"
               }`}
             >
-              {advice.needsExtraCare ? <CircleAlert size={22} /> : <Info size={22} />}
+              {advice.needsExtraCare ? (
+                <CircleAlert size={22} />
+              ) : (
+                <Info size={22} />
+              )}
               <div>
                 <strong>
                   {advice.needsExtraCare
@@ -362,7 +374,8 @@ export default function PaymentReview() {
                     : "No specific warning signs identified from your answers"}
                 </strong>
                 <p>
-                  This is guidance only. It cannot establish whether the payment is safe.
+                  This is guidance only. It cannot establish whether the payment
+                  is safe.
                 </p>
               </div>
             </div>
@@ -380,7 +393,9 @@ export default function PaymentReview() {
 
             <h3>Before You Decide</h3>
             <ol className="flow-advice-list">
-              {advice.steps.map((step) => <li key={step}>{step}</li>)}
+              {advice.steps.map((step) => (
+                <li key={step}>{step}</li>
+              ))}
             </ol>
 
             <div className="flow-review-actions">
@@ -399,12 +414,15 @@ export default function PaymentReview() {
 
         {restriction && (
           <p className="flow-panel" role="status">
-            {restriction}. Confirmation is unavailable while this restriction is active.
+            {restriction}. Confirmation is unavailable while this restriction is
+            active.
           </p>
         )}
 
         {actionError && (
-          <p className="flow-inline-error" role="alert">{actionError}</p>
+          <p className="flow-inline-error" role="alert">
+            {actionError}
+          </p>
         )}
 
         <section className="flow-panel flow-save-card">
@@ -438,7 +456,11 @@ export default function PaymentReview() {
           </div>
 
           {confirmCancel ? (
-            <div className="flow-panel" role="group" aria-label="Confirm cancellation">
+            <div
+              className="flow-panel"
+              role="group"
+              aria-label="Confirm cancellation"
+            >
               <h3>Cancel this payment?</h3>
               <p>This will discard this payment and its saved review.</p>
 
@@ -492,8 +514,8 @@ export default function PaymentReview() {
           )}
 
           <p className="flow-muted flow-small">
-            For this demo, saving works only in this browser session.
-            No payment is submitted.
+            For this demo, saving works only in this browser session. No payment
+            is submitted.
           </p>
         </section>
       </div>

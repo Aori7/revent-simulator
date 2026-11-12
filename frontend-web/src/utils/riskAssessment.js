@@ -31,7 +31,7 @@ export function assessTransactionRisk(transaction, context = {}) {
     "Payment initiated from an unfamiliar device",
   );
 
-  addRisk(context.isOnCall === true, 25, "Active phone call during payment");
+//   addRisk(context.isOnCall === true, 25, "Active phone call during payment");
 
   addRisk(
     context.isScreenSharing === true,

@@ -18,10 +18,13 @@ import {
 } from "../utils/demoSession";
 import { formatSGD, maskIdentifier } from "../utils/banking";
 import "../css/banking-flow.css";
+import useTransactionRisk from "../hooks/useTransactionRisk";
+import { saveRiskAssessment } from "../utils/riskSession";
 
 export default function Transfer() {
   const navigate = useNavigate();
   const location = useLocation();
+  const { assess } = useTransactionRisk();
   const [form, setForm] = useState(readDraft);
   const [error, setError] = useState("");
   const saved = getSavedReview(demoCustomer.id);
@@ -47,7 +50,7 @@ export default function Transfer() {
       amount > demoAccount.balance
     ) {
       setError(
-        `Enter a recipient and an amount between SGD 0.01 and ${formatSGD(demoAccount.balance)}.`
+        `Enter a recipient and an amount between SGD 0.01 and ${formatSGD(demoAccount.balance)}.`,
       );
       return;
     }
@@ -63,9 +66,18 @@ export default function Transfer() {
     }
 
     try {
-      saveDraft(form);
+      const draft = saveDraft(form);
+      const riskResult = assess(draft, {
+        isNewRecipient: true, // temporary demo assumption
+      });
+      saveRiskAssessment(draft, riskResult);
+      console.log("Transaction Risk Assessment:", riskResult);
       setError("");
-      navigate("/transfer/review");
+      if (riskResult.level === "low") {
+        navigate("/transfer/confirmation");
+      } else {
+        navigate("/transfer/review");
+      }
     } catch (err) {
       setError(err.message);
     }
@@ -89,7 +101,8 @@ export default function Transfer() {
             <span className="flow-eyebrow">TRANSFER & PAY</span>
             <h1>Make an E-commerce Payment</h1>
             <p>
-              Review your payment information before proceeding to the safety check.
+              Review your payment information before proceeding to the safety
+              check.
             </p>
           </div>
         </div>
@@ -124,8 +137,8 @@ export default function Transfer() {
         <form className="flow-panel flow-form" onSubmit={submit} noValidate>
           <h2>Payment Information</h2>
           <p className="flow-muted">
-            Sample recipient and payment details are pre-filled.
-            You can edit them for the demonstration.
+            Sample recipient and payment details are pre-filled. You can edit
+            them for the demonstration.
           </p>
 
           <div className="flow-form-group">
@@ -190,7 +203,9 @@ export default function Transfer() {
           </div>
 
           {error && (
-            <p className="flow-inline-error" role="alert">{error}</p>
+            <p className="flow-inline-error" role="alert">
+              {error}
+            </p>
           )}
 
           <div className="flow-form-footer">
@@ -210,7 +225,9 @@ export default function Transfer() {
           This prototype does not connect to a real bank.
         </div>
 
-        <Link className="flow-back" to="/">Back to home</Link>
+        <Link className="flow-back" to="/">
+          Back to home
+        </Link>
       </div>
     </main>
   );

@@ -30,7 +30,7 @@ import PaymentConfirmation from "./pages/PaymentConfirmation";
 import ScamChatbot from "./pages/ScamChatbot";
 
 import RiskTest from "./components/simulator/RiskTest";
-
+import TransferHub from "./pages/TransferHub";
 // Demo-only route protection
 function DemoProtectedRoute() {
   const isLoggedIn = sessionStorage.getItem("reventDemoLogin") === "true";
@@ -66,7 +66,8 @@ export default function App() {
           <Route path="/risk-test" element={<RiskTest />} />
 
             <Route path="/accounts" element={<Accounts />} />
-            <Route path="/transfer" element={<Transfer />} />
+            <Route path="/transfer" element={<TransferHub />} />
+            <Route path="/transfer/ecommerce" element={<Transfer />} /> 
             <Route path="/transfer/review" element={<PaymentReview />} />
             <Route
               path="/transfer/confirmation"

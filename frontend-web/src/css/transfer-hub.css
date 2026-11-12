@@ -1,0 +1,137 @@
+.transfer-hub-page {
+  min-height: 100vh;
+  background: #f5f6f8;
+}
+
+.transfer-hub-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 36px 24px 80px;
+}
+
+.transfer-hub-heading {
+  margin-bottom: 28px;
+}
+
+.transfer-hub-heading h2 {
+  font-size: 26px;
+  color: #242424;
+  margin: 0 0 8px;
+}
+
+.transfer-hub-heading p {
+  font-size: 17px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.transfer-hub-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.transfer-hub-card {
+  display: flex;
+  flex-direction: column;
+  padding: 26px;
+  background: #ffffff;
+  border: 1px solid #e1e4e8;
+  border-radius: 14px;
+  text-decoration: none;
+  color: #242424;
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.transfer-hub-card:hover {
+  transform: translateY(-4px);
+  border-color: #ed0016;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.transfer-hub-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  background: #fff0f1;
+  color: #ed0016;
+  border-radius: 14px;
+  margin-bottom: 20px;
+}
+
+.transfer-hub-card h3 {
+  font-size: 21px;
+  margin: 0 0 10px;
+  color: #242424;
+}
+
+.transfer-hub-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #6b7280;
+  margin: 0 0 24px;
+  flex: 1;
+}
+
+.transfer-hub-card-action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ed0016;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.transfer-hub-notice {
+  margin-top: 32px;
+  padding: 22px 26px;
+  background: #ffffff;
+  border-left: 4px solid #ed0016;
+  border-radius: 10px;
+}
+
+.transfer-hub-notice strong {
+  font-size: 18px;
+}
+
+.transfer-hub-notice p {
+  font-size: 15px;
+  color: #6b7280;
+  margin: 8px 0 0;
+}
+
+@media (max-width: 900px) {
+  .transfer-hub-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .transfer-hub-content {
+    padding: 24px 16px 100px;
+  }
+
+  .transfer-hub-heading h2 {
+    font-size: 23px;
+  }
+
+  .transfer-hub-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .transfer-hub-card {
+    padding: 20px;
+  }
+
+  .transfer-hub-icon {
+    margin-bottom: 14px;
+  }
+
+  .transfer-hub-card p {
+    margin-bottom: 16px;
+  }
+}

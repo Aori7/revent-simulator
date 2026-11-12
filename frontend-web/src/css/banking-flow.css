@@ -655,6 +655,61 @@
   color: #a21d2c;
 }
 
+
+.confirmation-risk {
+  background: #f5f6f8;
+  border-left: 4px solid #ed0016;
+  padding: 18px;
+  border-radius: 8px;
+  margin: 24px 0;
+}
+
+.confirmation-risk strong {
+  font-size: 17px;
+}
+
+.confirmation-risk p {
+  margin: 8px 0 0;
+  color: #555;
+}
+
+.confirm-transfer-btn {
+  width: 100%;
+  margin-top: 24px;
+  padding: 17px 24px;
+  border: none;
+  border-radius: 10px;
+  background: #ed0016;
+  color: #fff;
+  font: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.confirm-transfer-btn:hover {
+  background: #c70013;
+}
+
+.transfer-confirmed {
+  margin-top: 24px;
+  padding: 24px;
+  border: 1px solid #bbf7d0;
+  border-radius: 12px;
+  background: #f0fdf4;
+}
+
+.transfer-confirmed h2 {
+  margin: 0 0 10px;
+  color: #166534;
+  font-size: 22px;
+}
+
+.transfer-confirmed p {
+  margin: 0;
+  color: #166534;
+}
+
 /* ===== RESPONSIVE ===== */
 
 @media (max-width: 950px) {

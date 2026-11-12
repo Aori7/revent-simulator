@@ -4,13 +4,46 @@ import {
   ShieldAlert,
   Smartphone,
   Zap,
+  RotateCcw,
 } from "lucide-react";
 
 import { setRestriction } from "../../utils/demoSession";
 import usePaymentRestriction from "../../utils/usePaymentRestriction";
 
+import { useSimulator } from "../../context/SimulatorContext";
+
+const riskOptions = [
+  {
+    key: "isOnCall",
+    label: "Active Phone Call",
+    icon: PhoneCall,
+  },
+  {
+    key: "isScreenSharing",
+    label: "Screen Sharing",
+    icon: MonitorUp,
+  },
+  {
+    key: "hasScamReports",
+    label: "Suspicious Recipient",
+    icon: ShieldAlert,
+  },
+  {
+    key: "isUnfamiliarDevice",
+    label: "Unrecognised Device",
+    icon: Smartphone,
+  },
+  {
+    key: "hasRapidTransfers",
+    label: "Rapid Transactions",
+    icon: Zap,
+  },
+];
+
 export default function SimulatorPanel() {
   const restriction = usePaymentRestriction();
+
+  const { triggers, toggleTrigger, resetTriggers } = useSimulator();
 
   return (
     <div className="simulator-panel">
@@ -20,10 +53,12 @@ export default function SimulatorPanel() {
       </div>
 
       <p className="simulator-description">
-        Simulate different banking conditions to test REVENT's security features.
+        Simulate different banking conditions to test REVENT's security
+        features.
       </p>
 
       <label htmlFor="payment-restriction">Payment restriction (demo)</label>
+
       <select
         id="payment-restriction"
         value={restriction}
@@ -35,31 +70,26 @@ export default function SimulatorPanel() {
       </select>
 
       <div className="simulator-options">
-        <div className="simulator-option">
-          <PhoneCall size={25} />
-          <span>Active Phone Call</span>
-        </div>
+        {riskOptions.map(({ key, label, icon: Icon }) => (
+          <label key={key} className="simulator-option">
+            <Icon size={25} />
 
-        <div className="simulator-option">
-          <MonitorUp size={25} />
-          <span>Screen Sharing</span>
-        </div>
+            <span>{label}</span>
 
-        <div className="simulator-option">
-          <ShieldAlert size={25} />
-          <span>Suspicious Recipient</span>
-        </div>
-
-        <div className="simulator-option">
-          <Smartphone size={25} />
-          <span>Unrecognised Device</span>
-        </div>
-
-        <div className="simulator-option">
-          <Zap size={25} />
-          <span>Rapid Transactions</span>
-        </div>
+            <input
+              type="checkbox"
+              checked={triggers[key]}
+              onChange={() => toggleTrigger(key)}
+              aria-label={label}
+            />
+          </label>
+        ))}
       </div>
+
+      <button type="button" className="simulator-reset" onClick={resetTriggers}>
+        <RotateCcw size={18} />
+        Reset Risk Triggers
+      </button>
     </div>
   );
 }

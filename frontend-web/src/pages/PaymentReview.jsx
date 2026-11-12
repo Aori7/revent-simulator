@@ -184,7 +184,7 @@ export default function PaymentReview() {
   function finishReview() {
     try {
       completeReview(draft, answers);
-      navigate("/transfer/confirmation");
+      navigate("/transfer/transaction-review"); //modified this line
     } catch (err) {
       setActionError(err.message);
     }

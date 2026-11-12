@@ -125,6 +125,43 @@
     flex-shrink: 0;
 }
 
+/* Simulator trigger controls */
+
+.simulator-option span {
+  flex: 1;
+}
+
+.simulator-option input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--red-ocbc, #ee2722);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.simulator-reset {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  width: 100%;
+  margin-top: 18px;
+  padding: 12px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.simulator-reset:hover {
+  background: rgba(128, 128, 128, 0.08);
+}
+
 /* Responsive */
 
 @media (max-width: 600px) {

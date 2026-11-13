@@ -75,10 +75,10 @@ function Navbar() {
         <NavLink to="/more">More</NavLink>
       </div>
 
-        <a href="#" className="navbar-chatbot">
-          <Bot size={19} />
-          <span>AI Chatbot</span>
-        </a>
+        <NavLink to="/scam-chatbot" className="navbar-chatbot">
+  <Bot size={19} />
+  <span>AI Chatbot</span>
+</NavLink>
       </nav>
     </header>
   );

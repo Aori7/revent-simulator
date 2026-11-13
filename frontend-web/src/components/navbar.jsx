@@ -1,15 +1,22 @@
 import "../css/navbar.css";
 import ReventLogo from "./ReventLogo.jsx";
-import { NavLink } from 'react-router-dom';
-import {Search,CircleHelp,Bell,ChevronDown,LogOut,Bot,} from "lucide-react";
-import { useNavigate } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
+import {
+  Search,
+  CircleHelp,
+  Bell,
+  ChevronDown,
+  LogOut,
+  Bot,
+} from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    sessionStorage.removeItem('reventDemoLogin');
-    navigate('/login', { replace: true });
+    sessionStorage.removeItem("reventDemoLogin");
+    navigate("/login", { replace: true });
   };
   return (
     <header className="navbar">
@@ -57,7 +64,11 @@ function Navbar() {
             <ChevronDown size={15} />
           </button>
 
-          <button type="button" className="navbar-logout"onClick={handleLogout}>
+          <button
+            type="button"
+            className="navbar-logout"
+            onClick={handleLogout}
+          >
             <LogOut size={17} />
             <span>Logout</span>
           </button>
@@ -66,19 +77,21 @@ function Navbar() {
 
       {/* BOTTOM NAVIGATION */}
       <nav className="navbar-bottom" aria-label="Main navigation">
-      <div className="navbar-links">
-        <NavLink to="/" end>Home</NavLink>
-        <NavLink to="/accounts">Accounts</NavLink>
-        <NavLink to="/transfer">Transfer & Pay</NavLink>
-        <NavLink to="/cards">Cards</NavLink>
-        <NavLink to="/rewards">Rewards</NavLink>
-        <NavLink to="/more">More</NavLink>
-      </div>
+        <div className="navbar-links">
+          <NavLink to="/" end>
+            Home
+          </NavLink>
+          <NavLink to="/accounts">Accounts</NavLink>
+          <NavLink to="/transfer">Transfer & Pay</NavLink>
+          <NavLink to="/cards">Cards</NavLink>
+          <NavLink to="/rewards">Rewards</NavLink>
+          <NavLink to="/more">More</NavLink>
+        </div>
 
-        <a href="#" className="navbar-chatbot">
+        <NavLink to="/scam-chatbot" className="navbar-chatbot">
           <Bot size={19} />
           <span>AI Chatbot</span>
-        </a>
+        </NavLink>
       </nav>
     </header>
   );

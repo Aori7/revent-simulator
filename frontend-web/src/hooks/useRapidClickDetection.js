@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
 
 export default function useRapidClickDetection({
-  threshold = 2,
-  windowMs = 5000,
+  threshold = 10,
+  windowMs = 3000,
 } = {}) {
   const clickTimes = useRef([]);
   const [isRapidClicking, setIsRapidClicking] = useState(false);

@@ -13,7 +13,7 @@ function MobileNavbar() {
         <span>Home</span>
       </NavLink>
 
-      <NavLink to="/chatbot">
+      <NavLink to="/scam-chatbot">
         <Bot size={26} />
         <span>AI Chatbot</span>
       </NavLink>

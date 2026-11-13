@@ -1,0 +1,103 @@
+.payment-review-popup {
+  box-sizing: border-box;
+  width: min(420px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 0;
+  border-radius: 20px;
+  background: #fff;
+  color: #242124;
+  box-shadow: 0 20px 64px rgb(25 14 18 / 24%);
+}
+
+.payment-review-popup::backdrop {
+  background: rgb(27 24 28 / 58%);
+}
+
+.payment-review-popup__body {
+  padding: clamp(22px, 5vw, 32px);
+}
+
+.payment-review-popup__icon {
+  display: grid;
+  width: 58px;
+  height: 58px;
+  margin-bottom: 18px;
+  place-items: center;
+  border-radius: 50%;
+  background: #fff0f0;
+  color: #b42130;
+}
+
+.payment-review-popup h2 {
+  margin: 0 0 10px;
+  color: #291d20;
+  font-size: clamp(1.5rem, 4vw, 1.8rem);
+  line-height: 1.2;
+}
+
+.payment-review-popup p {
+  margin: 0;
+  color: #565159;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.payment-review-popup__reasons {
+  margin: 18px 0 0;
+  padding: 14px 16px 14px 34px;
+  border-inline-start: 3px solid #b42130;
+  border-radius: 8px;
+  background: #fff4f3;
+  color: #60252c;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  list-style: disc;
+}
+
+.payment-review-popup__reasons li + li {
+  margin-top: 4px;
+}
+
+.payment-review-popup__actions {
+  display: grid;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.payment-review-popup__actions button {
+  min-height: 46px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.payment-review-popup__primary {
+  border: 1px solid #ac202f;
+  background: #ac202f;
+  color: #fff;
+}
+
+.payment-review-popup__primary:hover {
+  background: #911b28;
+}
+
+.payment-review-popup__secondary {
+  border: 1px solid #ddd5d7;
+  background: #fff;
+  color: #40383b;
+}
+
+.payment-review-popup__secondary:hover {
+  background: #faf6f6;
+}
+
+.payment-review-popup__actions button:focus-visible {
+  outline: 3px solid #703646;
+  outline-offset: 3px;
+}

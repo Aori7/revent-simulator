@@ -655,6 +655,141 @@
   color: #a21d2c;
 }
 
+
+.confirmation-risk {
+  background: #f5f6f8;
+  border-left: 4px solid #ed0016;
+  padding: 18px;
+  border-radius: 8px;
+  margin: 24px 0;
+}
+
+.confirmation-risk strong {
+  font-size: 17px;
+}
+
+.confirmation-risk p {
+  margin: 8px 0 0;
+  color: #555;
+}
+
+.confirm-transfer-btn {
+  width: 100%;
+  margin-top: 24px;
+  padding: 17px 24px;
+  border: none;
+  border-radius: 10px;
+  background: #ed0016;
+  color: #fff;
+  font: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.confirm-transfer-btn:hover {
+  background: #c70013;
+}
+
+.transfer-confirmed {
+  margin-top: 24px;
+  padding: 24px;
+  border: 1px solid #bbf7d0;
+  border-radius: 12px;
+  background: #f0fdf4;
+}
+
+.transfer-confirmed h2 {
+  margin: 0 0 10px;
+  color: #166534;
+  font-size: 22px;
+}
+
+.transfer-confirmed p {
+  margin: 0;
+  color: #166534;
+}
+
+.call-safety-warning {
+  margin-top: 24px;
+  padding: 24px;
+  background: #fff5f5;
+  border: 2px solid #dc2626;
+  border-radius: 12px;
+  color: #7f1d1d;
+}
+
+.call-safety-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.call-safety-heading h2 {
+  font-size: 22px;
+  margin: 0;
+  color: #b91c1c;
+}
+
+.call-safety-warning > p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.call-safety-action {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-top: 20px;
+  padding: 18px;
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+.call-safety-action svg {
+  flex-shrink: 0;
+  color: #dc2626;
+}
+
+.call-safety-action strong {
+  font-size: 18px;
+}
+
+.call-safety-action p {
+  margin: 8px 0 0;
+  color: #7f1d1d;
+  font-size: 15px;
+}
+.rapid-click-warning {
+  margin-top: 24px;
+  padding: 24px;
+  border: 2px solid #d97706;
+  border-radius: 12px;
+  background: #fffbeb;
+  color: #78350f;
+}
+
+.rapid-click-warning h2 {
+  margin-top: 0;
+  font-size: 22px;
+}
+
+.rapid-click-warning p {
+  line-height: 1.6;
+}
+
+.rapid-click-warning button {
+  margin-top: 12px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #b45309;
+  color: white;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
 /* ===== RESPONSIVE ===== */
 
 @media (max-width: 950px) {

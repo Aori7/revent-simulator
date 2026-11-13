@@ -1,0 +1,208 @@
+.paynow-page {
+  min-height: 100vh;
+  background: #f5f6f8;
+}
+
+.paynow-container {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 30px 20px 100px;
+}
+
+.paynow-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 22px;
+  color: #ed0016;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.paynow-card {
+  background: #ffffff;
+  border: 1px solid #e1e4e8;
+  border-radius: 14px;
+  padding: 32px;
+}
+
+.paynow-section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+  color: #ed0016;
+}
+
+.paynow-section-title h2 {
+  font-size: 23px;
+  color: #242424;
+  margin: 0;
+}
+
+.paynow-card label {
+  display: block;
+  font-weight: 600;
+  margin: 18px 0 8px;
+  color: #242424;
+}
+
+.paynow-card input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 15px;
+  border: 1px solid #ccd3dc;
+  border-radius: 9px;
+  font: inherit;
+  font-size: 17px;
+  background: #ffffff;
+  color: #242424;
+}
+
+.paynow-card input:focus {
+  outline: 2px solid #ed0016;
+  outline-offset: 1px;
+}
+
+.paynow-lookup-row {
+  display: flex;
+  gap: 12px;
+}
+
+.paynow-lookup-row input {
+  flex: 1;
+}
+
+.paynow-lookup-button {
+  background: #ed0016;
+  color: #ffffff;
+  border: none;
+  border-radius: 9px;
+  padding: 0 24px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.paynow-recipient-result {
+  margin-top: 20px;
+  padding: 22px;
+  border: 1px solid #dce1e7;
+  border-radius: 12px;
+  background: #f8f9fb;
+}
+
+.paynow-recipient-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #15803d;
+}
+
+.paynow-recipient-result h3 {
+  font-size: 25px;
+  margin: 16px 0 8px;
+}
+
+.paynow-recipient-result p {
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.paynow-privacy-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px;
+  background: #fff8e8;
+  border-radius: 9px;
+  margin-top: 18px;
+  color: #805600;
+  font-size: 14px;
+}
+
+.paynow-privacy-note svg {
+  flex-shrink: 0;
+}
+
+.paynow-divider {
+  height: 1px;
+  background: #e1e4e8;
+  margin: 30px 0;
+}
+
+.paynow-footer {
+  margin-top: 30px;
+}
+
+.paynow-security-note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #6b7280;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.paynow-security-note svg {
+  flex-shrink: 0;
+  color: #15803d;
+}
+
+.paynow-continue-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 16px;
+  background: #ed0016;
+  color: #ffffff;
+  border: none;
+  border-radius: 9px;
+  font: inherit;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.paynow-continue-button:hover,
+.paynow-lookup-button:hover {
+  background: #c70013;
+}
+
+.paynow-error {
+  color: #b91c1c;
+  margin-top: 16px;
+}
+
+.paynow-demo-notice {
+  text-align: center;
+  color: #6b7280;
+  margin-top: 20px;
+  font-size: 13px;
+}
+
+@media (max-width: 600px) {
+  .paynow-container {
+    padding: 22px 14px 110px;
+  }
+
+  .paynow-card {
+    padding: 20px;
+  }
+
+  .paynow-lookup-row {
+    flex-direction: column;
+  }
+
+  .paynow-lookup-button {
+    padding: 14px;
+  }
+
+  .paynow-section-title h2 {
+    font-size: 21px;
+  }
+}

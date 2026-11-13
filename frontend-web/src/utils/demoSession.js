@@ -10,6 +10,7 @@ import {
   defaultAnswers,
   unansweredQuestions,
 } from "./banking.js";
+import { getRiskAssessment } from "./riskSession";
 
 const DRAFT = "revent.demo.paymentDraft";
 const REVIEW = "revent.demo.paymentReview";
@@ -90,7 +91,7 @@ function requireActive(draft) {
 
   if (!matches(record, activeDraft())) {
     throw new Error(
-      "This payment has changed or is no longer available. Return to Transfer & Pay."
+      "This payment has changed or is no longer available. Return to Transfer & Pay.",
     );
   }
 }
@@ -211,7 +212,18 @@ export function completeReview(draft, answers) {
 }
 
 export function canConfirm() {
-  return !readRestriction() && Boolean(matches(readJson(COMPLETED), activeDraft()));
+  const draft = activeDraft();
+
+  if (!draft || readRestriction()) {
+    return false;
+  }
+  const completedReview = matches(readJson(COMPLETED), draft);
+
+  if (completedReview) {
+    return true;
+  }
+  const risk = getRiskAssessment();
+  return risk?.level === "low";
 }
 
 // Shared cancellation service for the browser-session simulator.

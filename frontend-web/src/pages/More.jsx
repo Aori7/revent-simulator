@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import {Wallet,CreditCard,Settings,ChevronRight} from 'lucide-react';
+import {Wallet,CreditCard,Settings,ChevronRight,BookOpenCheck} from 'lucide-react';
 
 function More() {
   const services = [
@@ -20,7 +20,13 @@ function More() {
       description: 'Manage your preferences',
       icon: Settings,
       path: '/settings'
-    }
+    },
+    {
+      title: 'Scam Education',
+      description: 'Learn the warning signs and how to verify safely',
+      icon: BookOpenCheck,
+      path: '/Education'
+    },
   ];
 
   return (
